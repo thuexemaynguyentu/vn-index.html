@@ -41,6 +41,17 @@
     footer{background:#222;color:#fff;text-align:center;padding:20px 10px;margin-top:30px;}
     footer a{color:#f36b21;text-decoration:none;}
     @media(max-width:768px){h1{font-size:30px}ul.features li{font-size:18px}}
+
+    /* Hiệu ứng chữ xuất hiện */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 
   <!-- Schema LocalBusiness -->
@@ -95,12 +106,12 @@
   </nav>
 
   <div class="wrap">
-    <header>
+    <header class="fade-in">
       <h1>Thuê Xe Máy Hà Nội – Cho Thuê Xe Máy Ở Hà Nội Giá Rẻ</h1>
       <p class="lead">Dịch vụ <strong>thuê xe máy Hà Nội</strong> và <strong>thuê xe máy tháng Hà Nội</strong> uy tín. Xe số, xe ga, xe điện bảo dưỡng định kỳ. Có dịch vụ <strong>thuê xe máy giao tận nơi</strong> (có phí) tại Long Biên, Phố Cổ, Hoàn Kiếm, Tây Hồ, Ba Đình, Gia Lâm.</p>
     </header>
 
-    <section class="hero" id="gioithieu">
+    <section class="hero fade-in" id="gioithieu">
       <img src="https://thuexemaynguyentu.com/wp-content/uploads/2025/09/BANNER-THUE-XE-MAY-1.png" alt="Thuê xe máy Hà Nội - Nguyễn Tú" />
       <div>
         <ul class="features">
@@ -110,7 +121,7 @@
           <li>Thủ tục đơn giản – nhanh chóng</li>
           <li>Giao xe máy tận nơi (có phí)</li>
         </ul>
-        <div class="cta-row">
+        <div class="cta-row fade-in">
           <a class="btn" href="tel:0942467674">📞 Gọi ngay</a>
           <a class="btn ghost" href="https://zalo.me/0942467674">💬 Chat Zalo</a>
           <a class="btn ghost" href="https://share.google/UKLlQAkdGVgIICGAL">📍 Xem bản đồ</a>
@@ -118,7 +129,7 @@
       </div>
     </section>
 
-    <section id="gia">
+    <section id="gia" class="fade-in">
       <h2>📋 Bảng giá thuê xe máy ở Hà Nội</h2>
       <p>Giá thuê xe máy Hà Nội từ <strong>150.000 – 200.000đ/ngày</strong>. Thuê dài hạn giá càng rẻ.</p>
       <h3>1. Xe số</h3>
@@ -129,12 +140,12 @@
       <p>VinFast Klara, Evo200, YADEA, xe 50cc — <strong>150.000 – 200.000đ/ngày</strong></p>
     </section>
 
-    <section id="uutai">
+    <section id="uutai" class="fade-in">
       <h2>🎁 Ưu đãi thuê xe máy tháng Hà Nội</h2>
       <p>• Thuê từ 3 ngày trở lên: giá giảm dần<br>• Thuê theo tháng: chỉ từ <strong>1 – 2 triệu đồng</strong></p>
     </section>
 
-    <section id="lienhe">
+    <section id="lienhe" class="fade-in">
       <h2>📌 Liên hệ thuê xe máy Hà Nội</h2>
       <p><strong>Địa chỉ:</strong> 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội</p>
       <p><strong>Điện thoại:</strong> 0942467674 | <strong>Email:</strong> thuexemaynguyentu@gmail.com</p>
@@ -144,9 +155,23 @@
       <p><strong>Giờ mở cửa:</strong> 09:00 – 21:00 (mở cả lễ Tết)</p>
     </section>
 
-    <footer>
+    <footer class="fade-in">
       <p>© 2025 Thuê Xe Máy Hà Nội – Nguyễn Tú | <a href="https://thuexemaynguyentu.com">Website</a></p>
     </footer>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const elements = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+          }
+        });
+      }, { threshold: 0.2 });
+      elements.forEach(el => observer.observe(el));
+    });
+  </script>
 </body>
 </html>
