@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Thuê Xe Máy & Xe Điện Nguyễn Tú – Hà Nội (Long Biên, Phố Cổ, Hoàn Kiếm, Tây Hồ, Ba Đình, Gia Lâm)</title>
-  <meta name="description" content="Thuê xe máy & xe điện Hà Nội giá rẻ. Nguyễn Tú Long Biên cung cấp xe số, xe ga, xe điện. Giao xe có phí đến Phố Cổ, Hoàn Kiếm, Tây Hồ, Ba Đình, Gia Lâm. Liên hệ 0942467674." />
+  <meta name="description" content="Thuê xe máy & xe điện Hà Nội giá rẻ. Nguyễn Tú Long Biên cung cấp xe số, xe ga, xe điện. Giao xe có phí đến Phố Cổ, Hoàn Kiếm, Tây Hồ, Ba Đình, Gia Lâm. Liên hệ ngay: 0942467674." />
   <meta name="keywords" content="thuê xe máy Hà Nội, thuê xe điện Hà Nội, thuê xe máy Long Biên, thuê xe máy Phố Cổ, thuê xe máy Hoàn Kiếm, thuê xe máy Tây Hồ, thuê xe máy Ba Đình, thuê xe máy Gia Lâm" />
 
   <!-- Open Graph -->
@@ -14,12 +14,6 @@
   <meta property="og:url" content="https://thuexemaynguyentu.com" />
   <meta property="og:type" content="website" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Thuê Xe Máy & Xe Điện Nguyễn Tú – Hà Nội" />
-  <meta name="twitter:description" content="Thuê xe máy & xe điện Hà Nội giá tốt. Giao xe có phí đến Phố Cổ, Hoàn Kiếm, Tây Hồ, Ba Đình, Gia Lâm." />
-  <meta name="twitter:image" content="https://thuexemaynguyentu.com/wp-content/uploads/2025/09/BANNER-THUE-XE-MAY-1.png" />
-
   <style>
     :root {
       --accent: #f36b21;
@@ -28,26 +22,111 @@
       --maxw: 1100px;
       font-family: "Segoe UI", Roboto, Arial, sans-serif;
     }
-    body {margin:0;padding:32px;display:flex;justify-content:center;background:#fff;color:var(--dark);}
-    .wrap{max-width:var(--maxw);width:100%;}
-    .hero{display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
-    .left{flex:1 1 420px;}
-    .right{flex:1 1 420px;}
-    h1{font-size:42px;margin:0 0 8px;}
-    p.lead{margin:0 0 18px;color:var(--muted);font-size:18px;}
-    .image-card{border-radius:8px;overflow:hidden;box-shadow:0 4px 10px rgba(0,0,0,0.06);}
-    img{display:block;width:100%;height:auto;}
-    ul.features{list-style:none;padding:0;margin:0 0 24px;}
-    ul.features li{padding:12px 0;border-bottom:1px solid #f2f2f2;font-size:20px;display:flex;align-items:center;}
-    ul.features li::before{content:"✓";color:var(--accent);margin-right:14px;font-weight:700;}
-    .cta-row{display:flex;gap:18px;flex-wrap:wrap;margin:12px 0 28px;}
-    .btn{padding:14px 26px;border-radius:8px;border:2px solid var(--accent);background:var(--accent);color:#fff;text-decoration:none;font-weight:600;}
-    .btn.ghost{background:transparent;color:var(--accent);}
-    footer{margin-top:18px;text-align:center;color:var(--dark);font-size:18px;}
-    .contact{margin-top:8px;color:var(--muted);font-size:16px;}
-    @media(max-width:820px){h1{font-size:34px}ul.features li{font-size:18px}}
-    @media(max-width:520px){body{padding:20px}h1{font-size:28px}.cta-row{flex-direction:column}.btn{width:100%;text-align:center}}
+    body {margin:0;padding:0;background:#fff;color:var(--dark);}
+    header{position:sticky;top:0;z-index:999;background:var(--dark);padding:10px 0;}
+    nav{max-width:var(--maxw);margin:auto;display:flex;justify-content:space-between;align-items:center;padding:0 20px;}
+    nav a{color:#fff;text-decoration:none;margin:0 10px;font-weight:600;}
+    nav a:hover{color:var(--accent);}
+    .banner img{width:100%;height:auto;display:block;}
+    .wrap{max-width:var(--maxw);margin:auto;padding:30px 20px;}
+    h1{font-size:42px;margin:20px 0;}
+    h2{margin:30px 0 15px;color:var(--accent);}
+    h3{margin:20px 0 10px;color:var(--dark);}
+    p{line-height:1.6;color:var(--muted);}
+    ul{padding-left:20px;}
+    .cta{margin:20px 0;display:flex;flex-wrap:wrap;gap:12px;}
+    .btn{padding:12px 20px;border-radius:6px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;}
+    .btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent);}
+    footer{background:var(--dark);color:#fff;text-align:center;padding:20px;margin-top:30px;}
+    footer a{color:#fff;text-decoration:none;}
+    .reveal{opacity:0;transform:translateY(40px);transition:all 0.8s ease;}
+    .reveal.active{opacity:1;transform:translateY(0);}
+    @media(max-width:768px){h1{font-size:30px}h2{font-size:24px}}
   </style>
+</head>
+
+<body>
+  <!-- Menu -->
+  <header>
+    <nav>
+      <div><a href="#home">🏍️ Nguyễn Tú</a></div>
+      <div>
+        <a href="#gioithieu">Giới thiệu</a>
+        <a href="#giaxe">Giá xe</a>
+        <a href="#uudai">Ưu đãi</a>
+        <a href="#lienhe">Liên hệ</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Banner -->
+  <div class="banner" id="home">
+    <img src="https://thuexemaynguyentu.com/wp-content/uploads/2025/09/BANNER-THUE-XE-MAY-1.png" alt="Thuê xe máy Hà Nội giá rẻ">
+  </div>
+
+  <!-- Content -->
+  <div class="wrap">
+    <section id="gioithieu" class="reveal">
+      <h1>Thuê Xe Máy & Xe Điện Nguyễn Tú – Hà Nội</h1>
+      <p>Dịch vụ <strong>thuê xe máy và xe điện Nguyễn Tú</strong> tại Long Biên, Hà Nội chuyên cung cấp các dòng xe số, xe ga, xe điện chất lượng cao. Khách hàng có thể thuê ngắn hạn hoặc dài hạn với thủ tục đơn giản. Chúng tôi hỗ trợ <strong>giao xe tận nơi có phí</strong> đến các khu vực: Phố Cổ, Hoàn Kiếm, Tây Hồ, Ba Đình, Bến xe Gia Lâm. Xe luôn được bảo dưỡng định kỳ, an toàn khi di chuyển.</p>
+    </section>
+
+    <section id="giaxe" class="reveal">
+      <h2>📋 Giá & Loại xe</h2>
+      <h3>1. Xe số</h3>
+      <p>Wave A, Wave S 110cc, Sirius — <strong>150.000đ/ngày</strong></p>
+      <h3>2. Xe ga</h3>
+      <p>Nouvo, Mio, Click — <strong>150.000đ/ngày</strong><br>Vision, Air Blade — <strong>200.000đ/ngày</strong></p>
+      <h3>3. Xe điện</h3>
+      <p>VinFast Klara, Evo200, YADEA, xe điện 50cc — <strong>150.000 – 200.000đ/ngày</strong></p>
+    </section>
+
+    <section id="uudai" class="reveal">
+      <h2>🎁 Ưu đãi thuê dài hạn</h2>
+      <p>• Thuê từ 3 ngày trở lên: giá giảm dần<br>• Thuê theo tháng: chỉ từ <strong>1 – 2 triệu đồng/tháng</strong></p>
+      <h2>📌 Thủ tục thuê xe</h2>
+      <p>• Đặt cọc 2 – 5 triệu đồng<br>• Xuất trình CCCD/CMND hoặc hộ chiếu</p>
+      <h2>⚠️ Lưu ý</h2>
+      <p>🏠 Dịch vụ gia đình, không có nhân viên giao nhận<br>❌ Không cho thuê xe côn tay</p>
+    </section>
+
+    <section id="lienhe" class="reveal">
+      <h2>📞 Liên hệ ngay</h2>
+      <div class="cta">
+        <a class="btn" href="tel:0942467674">📞 Gọi: 0942467674</a>
+        <a class="btn ghost" href="https://zalo.me/0942467674" target="_blank">💬 Zalo</a>
+        <a class="btn ghost" href="https://wa.me/84942467674" target="_blank">📱 WhatsApp</a>
+        <a class="btn ghost" href="https://www.facebook.com/thuexemaynguyentu" target="_blank">👍 Fanpage</a>
+        <a class="btn ghost" href="https://share.google/UKLlQAkdGVgIICGAL" target="_blank">📍 Bản đồ</a>
+        <a class="btn ghost" href="mailto:info@thuexemaynguyentu.com">✉️ Email</a>
+        <a class="btn ghost" href="https://thuexemaynguyentu.com" target="_blank">🌐 Website</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>Thuê Xe Máy & Xe Điện Nguyễn Tú</strong></p>
+    <p>Địa chỉ: 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội</p>
+    <p>Tel/Zalo: 0942467674 | Email: info@thuexemaynguyentu.com</p>
+    <p><a href="https://thuexemaynguyentu.com">🌐 thuexemaynguyentu.com</a></p>
+  </footer>
+
+  <!-- Scroll Reveal -->
+  <script>
+    function reveal() {
+      let reveals = document.querySelectorAll(".reveal");
+      for (let i = 0; i < reveals.length; i++) {
+        let windowHeight = window.innerHeight;
+        let elementTop = reveals[i].getBoundingClientRect().top;
+        if (elementTop < windowHeight - 80) {
+          reveals[i].classList.add("active");
+        }
+      }
+    }
+    window.addEventListener("scroll", reveal);
+    reveal();
+  </script>
 
   <!-- Schema LocalBusiness -->
   <script type="application/ld+json">
@@ -57,6 +136,7 @@
     "name": "Thuê Xe Máy & Xe Điện Nguyễn Tú",
     "image": "https://thuexemaynguyentu.com/wp-content/uploads/2025/09/BANNER-THUE-XE-MAY-1.png",
     "telephone": "+84942467674",
+    "email": "info@thuexemaynguyentu.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "112 Nguyễn Văn Cừ, Bồ Đề",
@@ -66,6 +146,11 @@
     },
     "openingHours": "Mo-Su 09:00-21:00",
     "url": "https://thuexemaynguyentu.com",
+    "sameAs": [
+      "https://www.facebook.com/thuexemaynguyentu",
+      "https://zalo.me/0942467674",
+      "https://wa.me/84942467674"
+    ],
     "priceRange": "150000-200000VND"
   }
   </script>
@@ -79,7 +164,7 @@
       {
         "@type": "Question",
         "name": "Tôi cần giấy tờ gì để thuê xe máy?",
-        "acceptedAnswer": {"@type": "Answer","text": "CMND/CCCD hoặc hộ chiếu, giấy phép lái xe A1 trở lên, tiền đặt cọc từ 2-5 triệu, số điện thoại và địa chỉ lưu trú."}
+        "acceptedAnswer": {"@type": "Answer","text": "CMND/CCCD hoặc hộ chiếu, giấy phép lái xe A1 trở lên, tiền đặt cọc 2-5 triệu, số điện thoại và địa chỉ lưu trú."}
       },
       {
         "@type": "Question",
@@ -88,73 +173,11 @@
       },
       {
         "@type": "Question",
-        "name": "Giá thuê xe máy tại Hà Nội như thế nào?",
-        "acceptedAnswer": {"@type": "Answer","text": "Xe số: 150.000đ/ngày, xe ga: 150.000 – 200.000đ/ngày, thuê tháng giảm giá từ 1 – 2 triệu đồng/tháng."}
+        "name": "Giá thuê xe máy tại Hà Nội thế nào?",
+        "acceptedAnswer": {"@type": "Answer","text": "Xe số: 150.000đ/ngày, xe ga: 150.000–200.000đ/ngày, xe điện: 150.000–200.000đ/ngày. Thuê tháng giảm còn 1–2 triệu đồng."}
       }
     ]
   }
   </script>
-</head>
-
-<body>
-  <div class="wrap">
-    <header>
-      <h1>Thuê Xe Máy & Xe Điện Nguyễn Tú – Hà Nội</h1>
-      <p class="lead">Dịch vụ thuê xe máy & xe điện tại Long Biên, Hà Nội. Giao xe tận nơi (có phí) đến Phố Cổ, Hoàn Kiếm, Tây Hồ, Ba Đình, Bến xe Gia Lâm. Giá rẻ – thủ tục đơn giản – xe an toàn.</p>
-    </header>
-
-    <section class="hero">
-      <div class="left">
-        <div class="image-card">
-          <img src="https://thuexemaynguyentu.com/wp-content/uploads/2025/09/BANNER-THUE-XE-MAY-1.png"
-               alt="Thuê xe máy và xe điện Nguyễn Tú Hà Nội" loading="lazy">
-        </div>
-      </div>
-      <div class="right">
-        <ul class="features">
-          <li>Xe số, xe ga & xe điện đa dạng</li>
-          <li>Giao xe tận nơi có phí (Long Biên, Phố Cổ, Hoàn Kiếm, Tây Hồ, Ba Đình, Gia Lâm)</li>
-          <li>Giá thuê từ 150.000đ/ngày, ưu đãi dài hạn</li>
-          <li>Xe bảo dưỡng định kỳ, an toàn khi di chuyển</li>
-        </ul>
-        <div class="cta-row">
-          <a class="btn" href="tel:0942467674">📞 Gọi ngay: 0942467674</a>
-          <a class="btn ghost" href="https://zalo.me/0942467674" target="_blank" rel="noopener">💬 Chat Zalo</a>
-          <a class="btn ghost" href="https://share.google/UKLlQAkdGVgIICGAL" target="_blank" rel="noopener">📍 Xem bản đồ</a>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>📋 Giá & Loại xe</h2>
-      <p>Giá thuê: <strong>150.000 – 200.000đ/ngày</strong><br>(Giá rẻ hơn khi thuê dài ngày hoặc thuê tháng)</p>
-
-      <h3>1. Xe số</h3>
-      <p>Wave A, Wave S 110cc, Sirius — <strong>150.000đ/ngày</strong></p>
-
-      <h3>2. Xe ga</h3>
-      <p>Nouvo, Mio, Click — <strong>150.000đ/ngày</strong><br>Vision, Air Blade — <strong>200.000đ/ngày</strong></p>
-
-      <h3>3. Xe điện</h3>
-      <p>VinFast Klara, VinFast Evo200, YADEA, xe điện 50cc — <strong>150.000 – 200.000đ/ngày</strong></p>
-
-      <h2>🎁 Ưu đãi thuê dài hạn</h2>
-      <p>• Thuê từ 3 ngày: giá giảm dần<br>• Thuê theo tháng: chỉ từ <strong>1 – 2 triệu đồng/tháng</strong></p>
-
-      <h2>📌 Thủ tục thuê xe</h2>
-      <p>• Đặt cọc 2 – 5 triệu đồng<br>• Xuất trình CCCD/CMND hoặc hộ chiếu</p>
-
-      <h2>⚠️ Lưu ý</h2>
-      <p>🏠 Dịch vụ gia đình<br>❌ Không cho thuê xe côn tay</p>
-    </section>
-
-    <footer>
-      <div><strong>Địa chỉ:</strong> 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội</div>
-      <div class="contact">
-        <strong>Tel/Zalo:</strong> 0942467674 — 
-        <strong>Website:</strong> <a href="https://thuexemaynguyentu.com" target="_blank" rel="noopener">thuexemaynguyentu.com</a>
-      </div>
-    </footer>
-  </div>
 </body>
 </html>
