@@ -66,6 +66,75 @@
 
     /* Hero - fix whitespace under banner for iPhone/Safari */
     .hero {
+      <!-- Review Carousel -->
+<section id="reviews" class="reviews">
+  <h2>🧡 Khách hàng nói gì về Thuê Xe Máy Nguyễn Tú</h2>
+  <amp-carousel width="400" height="220" layout="responsive" type="slides" autoplay delay="4500" loop>
+    <div class="review-item">
+      <div class="review-avatar">🚲</div>
+      <h3>Minh Quân – Hoàn Kiếm</h3>
+      <p>“Thuê xe ở Nguyễn Tú rất tiện, giao xe tận nơi khách sạn chỉ 15 phút. Xe chạy êm, tiết kiệm xăng, chủ thân thiện nữa.”</p>
+    </div>
+    <div class="review-item">
+      <div class="review-avatar">🛵</div>
+      <h3>Hà Linh – Tây Hồ</h3>
+      <p>“Mình thuê theo tháng, xe Vision mới tinh, giá hợp lý. Anh Tú hỗ trợ nhanh khi cần bảo dưỡng, cực kỳ chuyên nghiệp.”</p>
+    </div>
+    <div class="review-item">
+      <div class="review-avatar">🏍️</div>
+      <h3>Trọng Nam – Long Biên</h3>
+      <p>“Thuê xe cọc nhẹ mà dịch vụ vẫn uy tín. Có giao tận nơi, giá rõ ràng, không phát sinh. Rất hài lòng.”</p>
+    </div>
+    <div class="review-item">
+      <div class="review-avatar">🧳</div>
+      <h3>Mai Anh – Ba Đình</h3>
+      <p>“Xe chạy ổn định, giao đúng giờ. Mình thuê để đi làm hàng ngày, cực kỳ tiết kiệm so với gọi xe công nghệ.”</p>
+    </div>
+    <div class="review-item">
+      <div class="review-avatar">😎</div>
+      <h3>Tuấn Phạm – Phố Cổ</h3>
+      <p>“Từng thuê ở nhiều chỗ nhưng Nguyễn Tú là nơi uy tín nhất. Xe sạch, giao nhanh, hỗ trợ khách du lịch rất tốt.”</p>
+    </div>
+  </amp-carousel>
+</section>
+
+<style amp-custom>
+  .reviews {
+    background: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 0;
+  }
+  .reviews h2 {
+    color: var(--accent);
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  .review-item {
+    background: #f9f9f9;
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  .review-avatar {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  .review-item h3 {
+    margin: 0;
+    color: var(--dark);
+    font-size: 18px;
+  }
+  .review-item p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+</style>
       display:flex;
       flex-wrap:wrap;
       justify-content:center;
