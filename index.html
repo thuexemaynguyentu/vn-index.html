@@ -61,7 +61,7 @@
     h2.header-sub{font-size:15px;margin:6px 0 0;color:#fff;opacity:0.95}
     h3.header-kicker{font-size:13px;margin:8px 0 0;color:var(--muted)}
 
-    /* Menu button (AMP requires interactive element) */
+    /* Menu button */
     .menu-btn{font-size:26px;cursor:pointer;color:#fff;position:fixed;top:14px;left:14px;z-index:1100;background:none;border:none;padding:8px}
     .menu-btn:focus{outline:none}
 
@@ -73,12 +73,12 @@
       align-items:center;
       gap:20px;
       margin:18px 0;
-      line-height:0;           /* critical to remove baseline gap on iPhone/Safari */
-      overflow:hidden;         /* extra safety */
+      line-height:0;           /* remove baseline gap on iPhone/Safari */
+      overflow:hidden;
     }
     .hero .left{flex:1 1 320px;min-width:260px;text-align:left;line-height:1.5}
     .hero .right{flex:0 1 560px;min-width:220px;text-align:center}
-    amp-img.hero-img{display:block;width:100%;height:auto;border-radius:var(--radius);box-shadow:0 8px 30px rgba(0,0,0,0.12)}
+    amp-img.hero-img{display:block;width:100%;height:auto;border-radius:var(--radius);box-shadow:0 8px 30px rgba(0,0,0,0.12);object-fit:cover}
 
     .features{list-style:none;padding:0;margin:14px 0;font-size:15px;color:var(--dark)}
     .features li{padding:8px 0;border-bottom:1px solid #eee;display:flex;align-items:center;gap:10px}
@@ -87,7 +87,7 @@
     /* Review carousel styles */
     .reviews { background: #fff; padding: 18px 0 6px; text-align:center; margin-top:0 }
     .reviews h2 { color: var(--accent); font-size:22px; margin: 6px 0 14px; }
-    .review-item { background: #fff; border-radius:10px; padding:18px; max-width:520px; margin: 0 auto; box-shadow:0 6px 18px rgba(0,0,0,0.06); border:1px solid #f1f1f1; display:flex; gap:12px; align-items:flex-start }
+    .review-item { background: #fff; border-radius:10px; padding:16px; max-width:720px; margin: 0 auto; box-shadow:0 6px 18px rgba(0,0,0,0.06); border:1px solid #f1f1f1; display:flex; gap:12px; align-items:flex-start }
     .review-avatar { width:56px; height:56px; border-radius:50%; flex:0 0 56px; display:flex; align-items:center; justify-content:center; font-size:22px; background:linear-gradient(135deg,var(--accent),var(--accent-dark)); color:#fff }
     .review-body { text-align:left }
     .review-body h3 { margin:0;font-size:16px;color:var(--dark) }
@@ -103,8 +103,8 @@
     td{background:#fff}
 
     /* CTA Floating */
-    .cta-fixed{position:fixed;bottom:18px;right:16px;display:flex;flex-direction:column;gap:10px;z-index:1200}
-    .cta-fixed a{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 14px;border-radius:999px;background:var(--accent);color:#fff;font-weight:800;box-shadow:0 10px 25px rgba(0,0,0,0.18);text-decoration:none;transform:translateZ(0)}
+    .cta-fixed{position:fixed;bottom:18px;right:16px;display:flex;flex-direction:column;gap:10px;z-index:1300}
+    .cta-fixed a{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 14px;border-radius:999px;background:var(--accent);color:#fff;font-weight:800;box-shadow:0 12px 30px rgba(0,0,0,0.18);text-decoration:none;transform:translateZ(0)}
     .cta-fixed a:active{transform:scale(0.98)}
     .cta-fixed a:hover{transform:translateY(-4px) scale(1.03);transition:transform .18s ease}
 
@@ -125,15 +125,12 @@
     .footer-col p,a{color:#fff;font-size:14px}
     .social-row{display:flex;gap:12px;align-items:center;margin-top:8px}
 
-    /* Menu styling inside sidebar */
+    /* Menu inside sidebar */
     amp-sidebar{width:280px;background:#fff;padding:20px}
     amp-sidebar nav ul{list-style:none;padding:0;margin:0}
     amp-sidebar nav ul li{margin:10px 0}
     amp-sidebar nav ul li a{display:block;padding:14px 10px;font-size:20px;color:var(--dark);font-weight:700;border-radius:8px}
     amp-sidebar nav ul li a:active, amp-sidebar nav ul li a:hover{background:#f5f5f5}
-
-    /* Map thumbnail (no iframe) */
-    .map-thumb{border-radius:8px;overflow:hidden;display:inline-block;border:1px solid #eee}
 
     /* Responsive tweaks */
     @media (max-width:900px){
@@ -150,7 +147,7 @@
     }
   </style>
 
-  <!-- Structured Data (JSON-LD): LocalBusiness/AutoRental, Service, Offer, Reviews, AggregateRating, FAQ, GeoCoordinates -->
+  <!-- Structured Data (JSON-LD): LocalBusiness/Service/AggregateRating/Review/FAQ -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -187,8 +184,7 @@
           "https://www.instagram.com/thuexemaynguyentu/",
           "https://www.youtube.com/channel/UCvUBwV24U4c5-q1iJ-ZL0Rg"
         ],
-        "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"86"},
-        "contactPoint":[{"@type":"ContactPoint","telephone":"+84942467674","contactType":"customer service","areaServed":"VN","availableLanguage":["Vietnamese"]}]
+        "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"128"}
       },
       {
         "@type":"Service",
@@ -208,26 +204,34 @@
         }
       },
       {
+        "@type":"AggregateRating",
+        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#agg",
+        "ratingValue":"4.9",
+        "reviewCount":"128",
+        "bestRating":"5",
+        "worstRating":"1"
+      },
+      {
         "@type":"Review",
-        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#review-minh",
+        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#rev1",
         "author":{"@type":"Person","name":"Minh Quân"},
         "datePublished":"2025-04-10",
-        "reviewBody":"Thuê xe ở Nguyễn Tú rất tiện, giao xe tận nơi khách sạn chỉ 15 phút. Xe chạy êm, tiết kiệm xăng, chủ thân thiện.",
+        "reviewBody":"Thuê xe ở Nguyễn Tú rất tiện, giao tận nơi khách sạn chỉ 15 phút. Xe chạy êm, tiết kiệm xăng, chủ thân thiện.",
         "reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},
         "itemReviewed":{"@id":"https://thuexemaynguyentu.github.io/vn-index.html#business"}
       },
       {
         "@type":"Review",
-        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#review-halinh",
+        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#rev2",
         "author":{"@type":"Person","name":"Hà Linh"},
         "datePublished":"2025-03-22",
-        "reviewBody":"Thuê theo tháng, xe Vision mới tinh, giá hợp lý. Anh Tú hỗ trợ nhanh khi cần bảo dưỡng.",
+        "reviewBody":"Mình thuê theo tháng, xe Vision mới tinh, giá hợp lý. Anh Tú hỗ trợ nhanh khi cần bảo dưỡng.",
         "reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},
         "itemReviewed":{"@id":"https://thuexemaynguyentu.github.io/vn-index.html#business"}
       },
       {
         "@type":"Review",
-        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#review-trong",
+        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#rev3",
         "author":{"@type":"Person","name":"Trọng Nam"},
         "datePublished":"2025-02-14",
         "reviewBody":"Thuê xe cọc nhẹ mà dịch vụ vẫn uy tín. Có giao tận nơi, giá rõ ràng, không phát sinh.",
@@ -236,7 +240,7 @@
       },
       {
         "@type":"Review",
-        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#review-maianh",
+        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#rev4",
         "author":{"@type":"Person","name":"Mai Anh"},
         "datePublished":"2025-01-05",
         "reviewBody":"Xe chạy ổn định, giao đúng giờ. Thuê để đi làm hàng ngày, tiết kiệm so với gọi xe công nghệ.",
@@ -245,7 +249,7 @@
       },
       {
         "@type":"Review",
-        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#review-tuanpham",
+        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#rev5",
         "author":{"@type":"Person","name":"Tuấn Phạm"},
         "datePublished":"2025-04-02",
         "reviewBody":"Nguyễn Tú là nơi uy tín nhất. Xe sạch, giao nhanh, hỗ trợ khách du lịch rất tốt.",
@@ -278,7 +282,7 @@
         <li><a href="#gioithieu">Giới thiệu</a></li>
         <li><a href="#gia">Bảng giá</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#lienhe">Liên hệ</a></li>
+        <li><a href="#footer">Liên hệ</a></li>
       </ul>
     </nav>
   </amp-sidebar>
@@ -331,7 +335,7 @@
       </div>
     </section>
 
-    <!-- REVIEW CAROUSEL inserted directly under hero (replaces contact block) -->
+    <!-- REVIEW CAROUSEL inserted directly under hero (replaces previous contact block) -->
     <section id="reviews" class="reviews" aria-label="Đánh giá khách hàng">
       <h2>🧡 Khách hàng nói gì về Thuê Xe Máy Nguyễn Tú</h2>
 
@@ -465,7 +469,7 @@
     </div>
 
     <!-- Footer (no TikTok) with colored SVG icons -->
-    <footer>
+    <footer id="footer">
       <div class="footer-wrap">
         <div class="footer-col">
           <h3>Liên hệ</h3>
