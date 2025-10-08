@@ -31,10 +31,11 @@
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
   <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+  <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.2.js"></script>
 
   <style amp-custom>
     :root{
-      --accent:#ff6600;    /* cam nổi bật */
+      --accent:#ff6600;
       --accent-dark:#e65500;
       --dark:#111;
       --muted:#6b6b6b;
@@ -66,75 +67,6 @@
 
     /* Hero - fix whitespace under banner for iPhone/Safari */
     .hero {
-      <!-- Review Carousel -->
-<section id="reviews" class="reviews">
-  <h2>🧡 Khách hàng nói gì về Thuê Xe Máy Nguyễn Tú</h2>
-  <amp-carousel width="400" height="220" layout="responsive" type="slides" autoplay delay="4500" loop>
-    <div class="review-item">
-      <div class="review-avatar">🚲</div>
-      <h3>Minh Quân – Hoàn Kiếm</h3>
-      <p>“Thuê xe ở Nguyễn Tú rất tiện, giao xe tận nơi khách sạn chỉ 15 phút. Xe chạy êm, tiết kiệm xăng, chủ thân thiện nữa.”</p>
-    </div>
-    <div class="review-item">
-      <div class="review-avatar">🛵</div>
-      <h3>Hà Linh – Tây Hồ</h3>
-      <p>“Mình thuê theo tháng, xe Vision mới tinh, giá hợp lý. Anh Tú hỗ trợ nhanh khi cần bảo dưỡng, cực kỳ chuyên nghiệp.”</p>
-    </div>
-    <div class="review-item">
-      <div class="review-avatar">🏍️</div>
-      <h3>Trọng Nam – Long Biên</h3>
-      <p>“Thuê xe cọc nhẹ mà dịch vụ vẫn uy tín. Có giao tận nơi, giá rõ ràng, không phát sinh. Rất hài lòng.”</p>
-    </div>
-    <div class="review-item">
-      <div class="review-avatar">🧳</div>
-      <h3>Mai Anh – Ba Đình</h3>
-      <p>“Xe chạy ổn định, giao đúng giờ. Mình thuê để đi làm hàng ngày, cực kỳ tiết kiệm so với gọi xe công nghệ.”</p>
-    </div>
-    <div class="review-item">
-      <div class="review-avatar">😎</div>
-      <h3>Tuấn Phạm – Phố Cổ</h3>
-      <p>“Từng thuê ở nhiều chỗ nhưng Nguyễn Tú là nơi uy tín nhất. Xe sạch, giao nhanh, hỗ trợ khách du lịch rất tốt.”</p>
-    </div>
-  </amp-carousel>
-</section>
-
-<style amp-custom>
-  .reviews {
-    background: #fff;
-    padding: 20px;
-    text-align: center;
-    margin-top: 0;
-  }
-  .reviews h2 {
-    color: var(--accent);
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-  .review-item {
-    background: #f9f9f9;
-    border: 2px solid var(--accent);
-    border-radius: 10px;
-    padding: 20px;
-    max-width: 400px;
-    margin: 0 auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
-  .review-avatar {
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
-  .review-item h3 {
-    margin: 0;
-    color: var(--dark);
-    font-size: 18px;
-  }
-  .review-item p {
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.5;
-    margin-top: 8px;
-  }
-</style>
       display:flex;
       flex-wrap:wrap;
       justify-content:center;
@@ -151,6 +83,17 @@
     .features{list-style:none;padding:0;margin:14px 0;font-size:15px;color:var(--dark)}
     .features li{padding:8px 0;border-bottom:1px solid #eee;display:flex;align-items:center;gap:10px}
     .features li .dot{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--accent),var(--accent-dark));color:#fff;font-weight:700}
+
+    /* Review carousel styles */
+    .reviews { background: #fff; padding: 18px 0 6px; text-align:center; margin-top:0 }
+    .reviews h2 { color: var(--accent); font-size:22px; margin: 6px 0 14px; }
+    .review-item { background: #fff; border-radius:10px; padding:18px; max-width:520px; margin: 0 auto; box-shadow:0 6px 18px rgba(0,0,0,0.06); border:1px solid #f1f1f1; display:flex; gap:12px; align-items:flex-start }
+    .review-avatar { width:56px; height:56px; border-radius:50%; flex:0 0 56px; display:flex; align-items:center; justify-content:center; font-size:22px; background:linear-gradient(135deg,var(--accent),var(--accent-dark)); color:#fff }
+    .review-body { text-align:left }
+    .review-body h3 { margin:0;font-size:16px;color:var(--dark) }
+    .review-body p { margin:6px 0 0;color:var(--muted); font-size:15px; line-height:1.5 }
+    .stars { margin-top:6px }
+    .star { width:16px;height:16px; display:inline-block; vertical-align:middle; margin-right:4px }
 
     /* Price table */
     .price-card{max-width:520px;margin:12px auto;border-radius:10px;overflow:hidden;border:1px solid #eee}
@@ -189,7 +132,7 @@
     amp-sidebar nav ul li a{display:block;padding:14px 10px;font-size:20px;color:var(--dark);font-weight:700;border-radius:8px}
     amp-sidebar nav ul li a:active, amp-sidebar nav ul li a:hover{background:#f5f5f5}
 
-    /* Map thumbnail (we link to Google Maps; no iframe) */
+    /* Map thumbnail (no iframe) */
     .map-thumb{border-radius:8px;overflow:hidden;display:inline-block;border:1px solid #eee}
 
     /* Responsive tweaks */
@@ -203,10 +146,11 @@
       .cta-fixed{right:12px;bottom:12px}
       amp-sidebar{width:240px}
       amp-sidebar nav ul li a{font-size:20px;padding:16px}
+      .review-item{flex-direction:row; gap:12px}
     }
   </style>
 
-  <!-- Structured Data (JSON-LD): LocalBusiness/AutoRental, Service, Offer, Review, AggregateRating, FAQ, GeoCoordinates -->
+  <!-- Structured Data (JSON-LD): LocalBusiness/AutoRental, Service, Offer, Reviews, AggregateRating, FAQ, GeoCoordinates -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -265,10 +209,46 @@
       },
       {
         "@type":"Review",
-        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#review1",
-        "author":{"@type":"Person","name":"Nguyễn Tuấn Tú"},
-        "datePublished":"2025-04-12",
-        "reviewBody":"Xe chạy êm, giao tận nơi đúng giờ, thủ tục nhanh gọn — rất hài lòng.",
+        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#review-minh",
+        "author":{"@type":"Person","name":"Minh Quân"},
+        "datePublished":"2025-04-10",
+        "reviewBody":"Thuê xe ở Nguyễn Tú rất tiện, giao xe tận nơi khách sạn chỉ 15 phút. Xe chạy êm, tiết kiệm xăng, chủ thân thiện.",
+        "reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},
+        "itemReviewed":{"@id":"https://thuexemaynguyentu.github.io/vn-index.html#business"}
+      },
+      {
+        "@type":"Review",
+        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#review-halinh",
+        "author":{"@type":"Person","name":"Hà Linh"},
+        "datePublished":"2025-03-22",
+        "reviewBody":"Thuê theo tháng, xe Vision mới tinh, giá hợp lý. Anh Tú hỗ trợ nhanh khi cần bảo dưỡng.",
+        "reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},
+        "itemReviewed":{"@id":"https://thuexemaynguyentu.github.io/vn-index.html#business"}
+      },
+      {
+        "@type":"Review",
+        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#review-trong",
+        "author":{"@type":"Person","name":"Trọng Nam"},
+        "datePublished":"2025-02-14",
+        "reviewBody":"Thuê xe cọc nhẹ mà dịch vụ vẫn uy tín. Có giao tận nơi, giá rõ ràng, không phát sinh.",
+        "reviewRating":{"@type":"Rating","ratingValue":"4","bestRating":"5"},
+        "itemReviewed":{"@id":"https://thuexemaynguyentu.github.io/vn-index.html#business"}
+      },
+      {
+        "@type":"Review",
+        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#review-maianh",
+        "author":{"@type":"Person","name":"Mai Anh"},
+        "datePublished":"2025-01-05",
+        "reviewBody":"Xe chạy ổn định, giao đúng giờ. Thuê để đi làm hàng ngày, tiết kiệm so với gọi xe công nghệ.",
+        "reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},
+        "itemReviewed":{"@id":"https://thuexemaynguyentu.github.io/vn-index.html#business"}
+      },
+      {
+        "@type":"Review",
+        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#review-tuanpham",
+        "author":{"@type":"Person","name":"Tuấn Phạm"},
+        "datePublished":"2025-04-02",
+        "reviewBody":"Nguyễn Tú là nơi uy tín nhất. Xe sạch, giao nhanh, hỗ trợ khách du lịch rất tốt.",
         "reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},
         "itemReviewed":{"@id":"https://thuexemaynguyentu.github.io/vn-index.html#business"}
       },
@@ -351,6 +331,94 @@
       </div>
     </section>
 
+    <!-- REVIEW CAROUSEL inserted directly under hero (replaces contact block) -->
+    <section id="reviews" class="reviews" aria-label="Đánh giá khách hàng">
+      <h2>🧡 Khách hàng nói gì về Thuê Xe Máy Nguyễn Tú</h2>
+
+      <amp-carousel width="800" height="260" layout="responsive" type="slides" autoplay delay="4500" loop aria-hidden="false">
+        <!-- slide 1 -->
+        <div class="review-item" role="group" aria-label="Review 1">
+          <div class="review-avatar">🚲</div>
+          <div class="review-body">
+            <h3>Minh Quân — Hoàn Kiếm</h3>
+            <div class="stars" aria-hidden="true">
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+            </div>
+            <p>Thuê xe ở Nguyễn Tú rất tiện, giao tận nơi khách sạn chỉ 15 phút. Xe chạy êm, tiết kiệm xăng, chủ thân thiện.</p>
+          </div>
+        </div>
+
+        <!-- slide 2 -->
+        <div class="review-item" role="group" aria-label="Review 2">
+          <div class="review-avatar">🛵</div>
+          <div class="review-body">
+            <h3>Hà Linh — Tây Hồ</h3>
+            <div class="stars" aria-hidden="true">
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+            </div>
+            <p>Mình thuê theo tháng, xe Vision mới tinh, giá hợp lý. Anh Tú hỗ trợ nhanh khi cần bảo dưỡng.</p>
+          </div>
+        </div>
+
+        <!-- slide 3 -->
+        <div class="review-item" role="group" aria-label="Review 3">
+          <div class="review-avatar">🏍️</div>
+          <div class="review-body">
+            <h3>Trọng Nam — Long Biên</h3>
+            <div class="stars" aria-hidden="true">
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+            </div>
+            <p>Thuê xe cọc nhẹ mà dịch vụ vẫn uy tín. Có giao tận nơi, giá rõ ràng, không phát sinh.</p>
+          </div>
+        </div>
+
+        <!-- slide 4 -->
+        <div class="review-item" role="group" aria-label="Review 4">
+          <div class="review-avatar">🧳</div>
+          <div class="review-body">
+            <h3>Mai Anh — Ba Đình</h3>
+            <div class="stars" aria-hidden="true">
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+            </div>
+            <p>Xe chạy ổn định, giao đúng giờ. Thuê để đi làm hàng ngày, tiết kiệm so với gọi xe công nghệ.</p>
+          </div>
+        </div>
+
+        <!-- slide 5 -->
+        <div class="review-item" role="group" aria-label="Review 5">
+          <div class="review-avatar">😎</div>
+          <div class="review-body">
+            <h3>Tuấn Phạm — Phố Cổ</h3>
+            <div class="stars" aria-hidden="true">
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+              <svg class="star" viewBox="0 0 20 20"><path fill="#FFB703" d="M10 1.6l2.5 5.1 5.6.5-4.2 3.6 1.3 5.4L10 13.4 4.8 16.2l1.3-5.4L2 7.2l5.6-.5L10 1.6z"/></svg>
+            </div>
+            <p>Nguyễn Tú là nơi uy tín nhất. Xe sạch, giao nhanh, hỗ trợ khách du lịch rất tốt.</p>
+          </div>
+        </div>
+
+      </amp-carousel>
+    </section>
+
     <!-- Price -->
     <section id="gia">
       <h2>📋 Bảng giá thuê xe máy</h2>
@@ -375,7 +443,7 @@
       <amp-accordion disable-session-states>
         <section>
           <h4>Tôi cần giấy tờ gì để thuê xe máy?</h4>
-          <p>CMND/CCCD hoặc hộ chiếu, giấy phép lái xe A1 trở lên (nếu có yêu cầu loại xe), tiền đặt cọc từ 2-5 triệu tuỳ loại xe, số điện thoại và địa chỉ lưu trú.</p>
+          <p>CMND/CCCD hoặc hộ chiếu, giấy phép lái xe A1 trở lên (nếu có yêu cầu), tiền đặt cọc từ 2-5 triệu tuỳ loại xe, số điện thoại và địa chỉ lưu trú.</p>
         </section>
         <section>
           <h4>Có dịch vụ giao xe tận nơi không? Phí thế nào?</h4>
@@ -386,23 +454,6 @@
           <p>Có. Thuê theo tháng có giá ưu đãi hơn theo ngày; vui lòng liên hệ để nhận báo giá chi tiết theo model và thời gian thuê.</p>
         </section>
       </amp-accordion>
-    </section>
-
-    <!-- Contact (no iframe) -->
-    <section id="lienhe">
-      <h2>📌 Liên hệ & Đặt xe</h2>
-      <p><strong>Địa chỉ:</strong> 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội</p>
-      <p><strong>Điện thoại đặt xe:</strong> <a href="tel:0942467674">0942467674</a> | <strong>Email:</strong> <a href="mailto:thuexmaynguyentu@gmail.com">thuexmaynguyentu@gmail.com</a></p>
-      <p class="muted">Giờ mở cửa: 09:00 – 21:00 (mở cả lễ & Tết)</p>
-
-      <p style="margin-top:10px;">
-        <!-- Link to Google Maps share (no iframe). Replace with your real share URL if needed -->
-        <a class="map-thumb" href="https://share.google/UKLlQAkdGVgIICGAL" target="_blank" rel="noopener">
-          <amp-img src="https://thuexemaynguyentu.com/wp-content/uploads/2025/09/BANNER-THUE-XE-MAY-1.png"
-                   width="800" height="420" layout="responsive" alt="Bản đồ Thuê Xe Máy Nguyễn Tú - mở Google Maps"></amp-img>
-        </a>
-        <small class="muted" style="display:block;margin-top:6px">Nhấn vào ảnh để mở vị trí trên Google Maps</small>
-      </p>
     </section>
 
     <!-- Floating CTA -->
@@ -428,42 +479,19 @@
           <div class="social-row" role="list">
             <!-- Facebook -->
             <a href="https://www.facebook.com/chothuexemaynguyentu/" target="_blank" rel="noopener" aria-label="Facebook" role="listitem">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect rx="6" width="24" height="24" fill="#1877F2"/>
-                <path d="M15.5 8H13.9c-.4 0-.9.2-.9 1v1.4h2.5l-.3 2.4h-2.2V20h-2.7v-6.2H8.7V11.4h2.1V9.4c0-2 1.2-3.4 3.1-3.4.9 0 1.6.1 1.8.1v2.3z" fill="#fff"/>
-              </svg>
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect rx="6" width="24" height="24" fill="#1877F2"/><path d="M15.5 8H13.9c-.4 0-.9.2-.9 1v1.4h2.5l-.3 2.4h-2.2V20h-2.7v-6.2H8.7V11.4h2.1V9.4c0-2 1.2-3.4 3.1-3.4.9 0 1.6.1 1.8.1v2.3z" fill="#fff"/></svg>
             </a>
-
             <!-- Zalo -->
             <a href="https://zalo.me/0942467674" target="_blank" rel="noopener" aria-label="Zalo" role="listitem">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect rx="6" width="24" height="24" fill="#0068FF"/>
-                <path d="M7.8 8.5h1.7l1.9 3.1L13.4 8.5h1.6l-2.5 4.1L15 15H13.4l-1.9-3.1L9.7 15H8.1l2.1-3.4L7.8 8.5z" fill="#fff"/>
-              </svg>
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect rx="6" width="24" height="24" fill="#0068FF"/><path d="M7.8 8.5h1.7l1.9 3.1L13.4 8.5h1.6l-2.5 4.1L15 15H13.4l-1.9-3.1L9.7 15H8.1l2.1-3.4L7.8 8.5z" fill="#fff"/></svg>
             </a>
-
             <!-- Instagram -->
             <a href="https://www.instagram.com/thuexemaynguyentu/" target="_blank" rel="noopener" aria-label="Instagram" role="listitem">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="ig" x1="0" x2="1">
-                    <stop offset="0" stop-color="#f58529"/>
-                    <stop offset="0.5" stop-color="#dd2a7b"/>
-                    <stop offset="1" stop-color="#515bd4"/>
-                  </linearGradient>
-                </defs>
-                <rect rx="6" width="24" height="24" fill="url(#ig)"/>
-                <path d="M12 7.2A4.8 4.8 0 1 0 12 16.8 4.8 4.8 0 0 0 12 7.2z" fill="#fff"/>
-                <circle cx="17.5" cy="6.5" r="1.2" fill="#fff"/>
-              </svg>
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ig" x1="0" x2="1"><stop offset="0" stop-color="#f58529"/><stop offset="0.5" stop-color="#dd2a7b"/><stop offset="1" stop-color="#515bd4"/></linearGradient></defs><rect rx="6" width="24" height="24" fill="url(#ig)"/><path d="M12 7.2A4.8 4.8 0 1 0 12 16.8 4.8 4.8 0 0 0 12 7.2z" fill="#fff"/><circle cx="17.5" cy="6.5" r="1.2" fill="#fff"/></svg>
             </a>
-
             <!-- YouTube -->
             <a href="https://www.youtube.com/channel/UCvUBwV24U4c5-q1iJ-ZL0Rg" target="_blank" rel="noopener" aria-label="YouTube" role="listitem">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect rx="6" width="24" height="24" fill="#FF0000"/>
-                <path d="M10 8l6 4-6 4V8z" fill="#fff"/>
-              </svg>
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect rx="6" width="24" height="24" fill="#FF0000"/><path d="M10 8l6 4-6 4V8z" fill="#fff"/></svg>
             </a>
           </div>
         </div>
@@ -471,7 +499,7 @@
         <div class="footer-col">
           <h3>Giờ mở cửa</h3>
           <p>09:00 – 21:00 (cả lễ & Tết)</p>
-          <p>© 2025 Thuê Xe Máy Hà Nội – Nguyễn Tú</p>
+          <p>© 2025 Thuê Xe Máy Hà Nội – Nguyễn Tuấn Tú</p>
         </div>
       </div>
     </footer>
