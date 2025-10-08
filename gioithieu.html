@@ -36,7 +36,7 @@
     }
     /* Base */
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html{scroll-behavior: smooth;} /* Thêm cuộn mượt mặc định */
     body{margin:0;font-family:'Be Vietnam Pro',system-ui,Arial,sans-serif;background:var(--bg);color:#222;-webkit-font-smoothing:antialiased;line-height:1.6}
     a{color:var(--accent);text-decoration:none}
     .container-narrow{max-width:var(--maxw);margin:0 auto;padding:0 16px}
@@ -122,11 +122,11 @@
     .floating-cta a{background:var(--accent);color:#fff;padding:12px 14px;border-radius:999px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
     .floating-cta a:hover{transform:translateY(-4px);transition:all .18s ease}
 
-    /* === MỚI: Hiệu ứng Fade-in khi cuộn === */
+    /* === SỬA: Hiệu ứng Fade-in 0.9s === */
     .fade-in {
       opacity: 0;
       transform: translateY(15px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      transition: opacity 0.9s ease-out, transform 0.9s ease-out;
     }
     .fade-in.visible {
       opacity: 1;
@@ -179,11 +179,11 @@
       </div>
       <div class="offcanvas-body">
         <ul class="list-unstyled">
-          <li class="mb-2"><a href="#gioithieu" class="d-block fs-5 off-link" data-bs-dismiss="offcanvas">Trang chủ</a></li>
-          <li class="mb-2"><a href="#gioithieu" class="d-block fs-5 off-link" data-bs-dismiss="offcanvas">Giới thiệu</a></li>
-          <li class="mb-2"><a href="#gia" class="d-block fs-5 off-link" data-bs-dismiss="offcanvas">Bảng giá</a></li>
-          <li class="mb-2"><a href="#faq" class="d-block fs-5 off-link" data-bs-dismiss="offcanvas">FAQ</a></li>
-          <li class="mb-2"><a href="#footer" class="d-block fs-5 off-link" data-bs-dismiss="offcanvas">Liên hệ</a></li>
+          <li class="mb-2"><a href="#gioithieu" class="d-block fs-5 nav-link" data-bs-dismiss="offcanvas">Trang chủ</a></li>
+          <li class="mb-2"><a href="#gioithieu" class="d-block fs-5 nav-link" data-bs-dismiss="offcanvas">Giới thiệu</a></li>
+          <li class="mb-2"><a href="#gia" class="d-block fs-5 nav-link" data-bs-dismiss="offcanvas">Bảng giá</a></li>
+          <li class="mb-2"><a href="#faq" class="d-block fs-5 nav-link" data-bs-dismiss="offcanvas">FAQ</a></li>
+          <li class="mb-2"><a href="#footer" class="d-block fs-5 nav-link" data-bs-dismiss="offcanvas">Liên hệ</a></li>
         </ul>
       </div>
     </div>
@@ -450,30 +450,39 @@
       });
     }
 
-    // Smooth scroll for anchor links
-    function smoothTo(selector){
-      const el = document.querySelector(selector);
-      if(!el) return;
-      const headerOffset = document.querySelector('header.site-header')?.offsetHeight || 86;
-      const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - headerOffset - 12;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    // === SỬA: Logic cuộn mượt cho menu để không bị lỗi ===
+    function smoothScrollTo(selector) {
+      const element = document.querySelector(selector);
+      if (!element) return;
+      
+      const headerOffset = document.querySelector('header.site-header')?.offsetHeight || 70;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 15;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
-    // attach to links (desktop + offcanvas)
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', function(e){
-        const href = this.getAttribute('href');
-        if(href && href.startsWith('#')){
-          e.preventDefault();
-          smoothTo(href);
-          // auto-close offcanvas if open
-          const offEl = document.getElementById('offcanvasMenu');
-          if(offEl && offEl.classList.contains('show')){
-            bootstrap.Offcanvas.getInstance(offEl)?.hide();
+
+    // Gắn sự kiện click CHỈ cho các link điều hướng (.nav-link)
+    document.querySelectorAll('.nav-link').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault(); // Ngăn hành vi mặc định
+        const targetId = this.getAttribute('href');
+        smoothScrollTo(targetId);
+
+        // Nếu là menu mobile, đóng lại sau khi click
+        const offcanvasEl = document.getElementById('offcanvasMenu');
+        if (offcanvasEl && offcanvasEl.classList.contains('show')) {
+          const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasEl);
+          if (offcanvasInstance) {
+            offcanvasInstance.hide();
           }
         }
       });
     });
+    // ========================================================
 
     // Init Swiper for reviews (autoplay, pause on hover)
     const swiper = new Swiper('.mySwiper', {
@@ -491,24 +500,21 @@
       swiperEl.addEventListener('mouseleave', ()=> swiper.autoplay.start());
     }
 
-    // === MỚI: Logic hiệu ứng Fade-in khi cuộn ===
+    // Logic hiệu ứng Fade-in khi cuộn
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
-        // Khi phần tử vào màn hình, thêm class 'visible' để kích hoạt hiệu ứng
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          obs.unobserve(entry.target); // Ngừng theo dõi sau khi đã hiện
+          obs.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.1 // Kích hoạt khi 10% phần tử hiển thị
+      threshold: 0.1
     });
 
-    // Theo dõi tất cả phần tử có class 'fade-in'
     document.querySelectorAll('.fade-in').forEach(el => {
       observer.observe(el);
     });
-    // ===========================================
   </script>
 </body>
 </html>
