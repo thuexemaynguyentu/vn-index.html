@@ -239,21 +239,71 @@
     </section>
 
     <section id="gia" class="fade-in" style="transition-delay:.11s">
-      <h2>📋 Bảng giá thuê xe máy</h2>
-      <h3 style="color:var(--muted);font-weight:600">Giá minh bạch — không phát sinh</h3>
-      <div class="price-card mt-3">
-        <table class="pricetable">
-          <thead>
-            <tr><th>Loại xe</th><th>Giá/ngày</th><th>Giá/tuần</th><th>Giá/tháng</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Xe số</td><td>150.000đ</td><td>600.000đ</td><td>1.000.000đ</td></tr>
-            <tr><td>Xe ga</td><td>150.000 – 200.000đ</td><td>700.000 – 1.000.000đ</td><td>1.200.000 – 2.000.000đ</td></tr>
-            <tr><td>Xe điện</td><td>150.000 – 200.000đ</td><td>700.000 – 1.000.000đ</td><td>1.200.000 – 2.000.000đ</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+  <h2>📋 Bảng giá thuê xe máy</h2>
+  <h3 style="color:var(--muted);font-weight:600">Giá minh bạch — không phát sinh</h3>
+  
+  <!-- Bọc table trong div có scroll -->
+  <div class="price-card mt-3" style="overflow-x:auto;">
+    <table class="pricetable">
+      <thead>
+        <tr>
+          <th>Loại xe</th>
+          <th>Giá/ngày</th>
+          <th>Giá/tuần</th>
+          <th>Giá/tháng</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Xe số</td>
+          <td>150.000đ</td>
+          <td>600.000đ</td>
+          <td>1.000.000đ</td>
+        </tr>
+        <tr>
+          <td>Xe ga</td>
+          <td>150.000 – 200.000đ</td>
+          <td>700.000 – 1.000.000đ</td>
+          <td>1.200.000 – 2.000.000đ</td>
+        </tr>
+        <tr>
+          <td>Xe điện</td>
+          <td>150.000 – 200.000đ</td>
+          <td>700.000 – 1.000.000đ</td>
+          <td>1.200.000 – 2.000.000đ</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<style>
+.price-card {
+  max-width: 100%;
+  margin: 12px auto;
+  border-radius: 10px;
+  border: 1px solid #eee;
+}
+
+.pricetable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 480px; /* giúp table không bị ép nhỏ trên mobile */
+}
+
+.pricetable th,
+.pricetable td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.pricetable th {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+}
+</style>
 
     <section id="faq" class="faq-section fade-in" style="transition-delay:.13s" aria-label="Câu hỏi thường gặp">
       <h2>❓ Câu hỏi thường gặp</h2>
