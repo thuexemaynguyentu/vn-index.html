@@ -3,9 +3,13 @@
 <head>
   <meta charset="utf-8">
   <title>Thuê xe máy Hà Nội – Thuê Xe Máy Nguyễn Tú | Thuê theo tháng, cọc nhẹ, giao tận nơi</title>
-  <link rel="canonical" href="https://thuexemaynguyentu.com">
+
+  <!-- canonical trỏ chính xác tới GitHub Pages -->
+  <link rel="canonical" href="https://thuexemaynguyentu.github.io/vn-index.html">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <meta name="robots" content="index, follow">
+
+  <!-- SEO -->
   <meta name="description" content="Thuê xe máy Hà Nội tại Nguyễn Tú — Dịch vụ uy tín, thuê theo tháng, cọc nhẹ, giao tận nơi (có phí). Xe số, xe ga, xe điện. Giá từ 150.000đ/ngày. Liên hệ: 0942467674.">
   <meta name="keywords" content="Thuê xe máy Hà Nội, thuê xe máy Hà Nội theo tháng, thuê xe máy Hà Nội giao tận nơi, thuê xe máy Hà Nội cọc nhẹ">
 
@@ -14,7 +18,7 @@
   <meta property="og:title" content="Thuê xe máy Hà Nội – Thuê Xe Máy Nguyễn Tú">
   <meta property="og:description" content="Thuê xe máy Hà Nội: thuê theo tháng, cọc nhẹ, giao tận nơi. Liên hệ 0942467674.">
   <meta property="og:image" content="https://thuexemaynguyentu.com/wp-content/uploads/2025/09/BANNER-THUE-XE-MAY-1.png">
-  <meta property="og:url" content="https://thuexemaynguyentu.com">
+  <meta property="og:url" content="https://thuexemaynguyentu.github.io/vn-index.html">
   <meta property="og:type" content="website">
 
   <!-- Twitter Card -->
@@ -40,7 +44,7 @@
       font-family:"Roboto","Segoe UI",Arial,sans-serif;
     }
 
-    /* Base */
+    /* Reset / base */
     html,body{height:100%}
     body{margin:0;padding:0;background:var(--bg);color:var(--dark);-webkit-font-smoothing:antialiased}
     a{color:var(--accent);text-decoration:none}
@@ -56,15 +60,24 @@
     h2.header-sub{font-size:15px;margin:6px 0 0;color:#fff;opacity:0.95}
     h3.header-kicker{font-size:13px;margin:8px 0 0;color:var(--muted)}
 
-    /* Menu button */
+    /* Menu button (AMP requires interactive element) */
     .menu-btn{font-size:26px;cursor:pointer;color:#fff;position:fixed;top:14px;left:14px;z-index:1100;background:none;border:none;padding:8px}
     .menu-btn:focus{outline:none}
 
-    /* Hero */
-    .hero{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px;margin:18px 0;line-height:0}
+    /* Hero - fix whitespace under banner for iPhone/Safari */
+    .hero {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:center;
+      gap:20px;
+      margin:18px 0;
+      line-height:0;           /* critical to remove baseline gap on iPhone/Safari */
+      overflow:hidden;         /* extra safety */
+    }
     .hero .left{flex:1 1 320px;min-width:260px;text-align:left;line-height:1.5}
-    .hero .right{flex:0 1 480px;min-width:220px;text-align:center}
-    amp-img.hero-img{display:block;border-radius:var(--radius);box-shadow:0 8px 30px rgba(0,0,0,0.12);width:100%;height:auto}
+    .hero .right{flex:0 1 560px;min-width:220px;text-align:center}
+    amp-img.hero-img{display:block;width:100%;height:auto;border-radius:var(--radius);box-shadow:0 8px 30px rgba(0,0,0,0.12)}
 
     .features{list-style:none;padding:0;margin:14px 0;font-size:15px;color:var(--dark)}
     .features li{padding:8px 0;border-bottom:1px solid #eee;display:flex;align-items:center;gap:10px}
@@ -82,7 +95,7 @@
     .cta-fixed a{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 14px;border-radius:999px;background:var(--accent);color:#fff;font-weight:800;box-shadow:0 10px 25px rgba(0,0,0,0.18);text-decoration:none;transform:translateZ(0)}
     .cta-fixed a:active{transform:scale(0.98)}
     .cta-fixed a:hover{transform:translateY(-4px) scale(1.03);transition:transform .18s ease}
-    
+
     /* Sections + headings */
     h2{font-size:20px;margin:6px 0;color:var(--dark)}
     h3{font-size:16px;margin:6px 0;color:var(--muted)}
@@ -104,10 +117,10 @@
     amp-sidebar{width:280px;background:#fff;padding:20px}
     amp-sidebar nav ul{list-style:none;padding:0;margin:0}
     amp-sidebar nav ul li{margin:10px 0}
-    amp-sidebar nav ul li a{display:block;padding:12px 10px;font-size:18px;color:var(--dark);font-weight:700;border-radius:8px}
+    amp-sidebar nav ul li a{display:block;padding:14px 10px;font-size:20px;color:var(--dark);font-weight:700;border-radius:8px}
     amp-sidebar nav ul li a:active, amp-sidebar nav ul li a:hover{background:#f5f5f5}
 
-    /* Map thumbnail */
+    /* Map thumbnail (we link to Google Maps; no iframe) */
     .map-thumb{border-radius:8px;overflow:hidden;display:inline-block;border:1px solid #eee}
 
     /* Responsive tweaks */
@@ -120,24 +133,24 @@
       .menu-btn{left:10px;top:10px}
       .cta-fixed{right:12px;bottom:12px}
       amp-sidebar{width:240px}
-      amp-sidebar nav ul li a{font-size:20px;padding:14px}
+      amp-sidebar nav ul li a{font-size:20px;padding:16px}
     }
   </style>
 
-  <!-- Structured Data: LocalBusiness (AutoRental), Service, Offers, Reviews, FAQ, GeoCoordinates -->
+  <!-- Structured Data (JSON-LD): LocalBusiness/AutoRental, Service, Offer, Review, AggregateRating, FAQ, GeoCoordinates -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@graph":[
       {
         "@type":["AutoRental","LocalBusiness"],
-        "@id":"https://thuexemaynguyentu.com#business",
+        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#business",
         "name":"Thuê Xe Máy Nguyễn Tú",
         "founder":"Nguyễn Tuấn Tú",
         "image":"https://thuexemaynguyentu.com/wp-content/uploads/2025/09/BANNER-THUE-XE-MAY-1.png",
-        "url":"https://thuexemaynguyentu.com",
+        "url":"https://thuexemaynguyentu.github.io/vn-index.html",
         "telephone":"+84942467674",
-        "email":"thuexemaynguyentu@gmail.com",
+        "email":"thuexmaynguyentu@gmail.com",
         "priceRange":"150000-200000VND",
         "address":{
           "@type":"PostalAddress",
@@ -166,10 +179,10 @@
       },
       {
         "@type":"Service",
-        "@id":"https://thuexemaynguyentu.com#service1",
+        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#service1",
         "name":"Cho thuê xe máy theo ngày/tuần/tháng",
         "serviceType":"Cho thuê xe máy",
-        "provider":{"@id":"https://thuexemaynguyentu.com#business"},
+        "provider":{"@id":"https://thuexemaynguyentu.github.io/vn-index.html#business"},
         "areaServed":{"@type":"City","name":"Hà Nội"},
         "hasOfferCatalog":{
           "@type":"OfferCatalog",
@@ -183,19 +196,19 @@
       },
       {
         "@type":"Review",
-        "@id":"https://thuexemaynguyentu.com#review1",
+        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#review1",
         "author":{"@type":"Person","name":"Nguyễn Tuấn Tú"},
         "datePublished":"2025-04-12",
         "reviewBody":"Xe chạy êm, giao tận nơi đúng giờ, thủ tục nhanh gọn — rất hài lòng.",
         "reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},
-        "itemReviewed":{"@id":"https://thuexemaynguyentu.com#business"}
+        "itemReviewed":{"@id":"https://thuexemaynguyentu.github.io/vn-index.html#business"}
       },
       {
         "@type":"FAQPage",
-        "@id":"https://thuexemaynguyentu.com#faq",
+        "@id":"https://thuexemaynguyentu.github.io/vn-index.html#faq",
         "mainEntity":[
-          {"@type":"Question","name":"Tôi cần giấy tờ gì để thuê xe máy?","acceptedAnswer":{"@type":"Answer","text":"CMND/CCCD hoặc hộ chiếu, giấy phép lái xe A1 trở lên, tiền đặt cọc từ 2-5 triệu tuỳ xe, số điện thoại và địa chỉ lưu trú."}},
-          {"@type":"Question","name":"Có dịch vụ giao xe tận nơi không? Phí thế nào?","acceptedAnswer":{"@type":"Answer","text":"Có. Phí giao tuỳ khu vực (thường 50.000đ - 150.000đ). Liên hệ 0942467674 để biết phí chính xác."}},
+          {"@type":"Question","name":"Tôi cần giấy tờ gì để thuê xe máy?","acceptedAnswer":{"@type":"Answer","text":"CMND/CCCD hoặc hộ chiếu, giấy phép lái xe A1 trở lên (nếu có yêu cầu), tiền đặt cọc từ 2-5 triệu tuỳ xe, số điện thoại và địa chỉ lưu trú."}},
+          {"@type":"Question","name":"Có dịch vụ giao xe tận nơi không? Phí thế nào?","acceptedAnswer":{"@type":"Answer","text":"Có. Phí giao tuỳ khu vực (thường 50.000đ - 150.000đ). Vui lòng gọi 0942467674 để biết phí chính xác."}},
           {"@type":"Question","name":"Giá thuê theo tháng?","acceptedAnswer":{"@type":"Answer","text":"Giá thuê tháng từ 1.200.000đ – 2.000.000đ tuỳ loại xe."}}
         ]
       }
@@ -205,7 +218,7 @@
 </head>
 
 <body>
-  <!-- Menu button (AMP requires interactive element) -->
+  <!-- Menu button -->
   <button class="menu-btn" on="tap:sidebar.toggle" aria-label="Mở menu">☰</button>
 
   <amp-sidebar id="sidebar" layout="nodisplay" side="left">
@@ -222,7 +235,7 @@
   </amp-sidebar>
 
   <div class="wrap">
-    <!-- Header (thay thế toàn bộ header cũ bằng version SEO-optimized) -->
+    <!-- Header SEO-optimized -->
     <header>
       <div class="brand-row">
         <div class="brand-left">
@@ -260,7 +273,7 @@
       </div>
 
       <div class="right">
-        <!-- amp-img with display:block to avoid baseline whitespace -->
+        <!-- amp-img with layout responsive to avoid baseline gap on iPhone/Safari -->
         <amp-img class="hero-img"
                  src="https://thuexemaynguyentu.com/wp-content/uploads/2025/09/BANNER-THUE-XE-MAY-1.png"
                  width="1200" height="675"
@@ -269,7 +282,7 @@
       </div>
     </section>
 
-    <!-- Price table -->
+    <!-- Price -->
     <section id="gia">
       <h2>📋 Bảng giá thuê xe máy</h2>
       <h3>Giá minh bạch — không phát sinh (tùy khu vực giao)</h3>
@@ -306,24 +319,24 @@
       </amp-accordion>
     </section>
 
-    <!-- Contact / Map -->
+    <!-- Contact (no iframe) -->
     <section id="lienhe">
       <h2>📌 Liên hệ & Đặt xe</h2>
       <p><strong>Địa chỉ:</strong> 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội</p>
-      <p><strong>Điện thoại:</strong> <a href="tel:0942467674">0942467674</a> | <strong>Email:</strong> <a href="mailto:thuexemaynguyentu@gmail.com">thuexemaynguyentu@gmail.com</a></p>
+      <p><strong>Điện thoại đặt xe:</strong> <a href="tel:0942467674">0942467674</a> | <strong>Email:</strong> <a href="mailto:thuexmaynguyentu@gmail.com">thuexmaynguyentu@gmail.com</a></p>
       <p class="muted">Giờ mở cửa: 09:00 – 21:00 (mở cả lễ & Tết)</p>
 
       <p style="margin-top:10px;">
-        <!-- Map thumbnail linking to Google Maps (amp-iframe embed often heavy; using image link is faster) -->
+        <!-- Link to Google Maps share (no iframe). Replace with your real share URL if needed -->
         <a class="map-thumb" href="https://share.google/UKLlQAkdGVgIICGAL" target="_blank" rel="noopener">
-          <amp-img src="https://maps.googleapis.com/maps/api/staticmap?center=21.0409222,105.8692870&zoom=15&size=600x300&markers=color:red%7C21.0409222,105.8692870&key=YOUR_GOOGLE_STATIC_MAPS_KEY"
-                   width="600" height="300" layout="responsive" alt="Bản đồ Thuê Xe Máy Nguyễn Tú"></amp-img>
+          <amp-img src="https://thuexemaynguyentu.com/wp-content/uploads/2025/09/BANNER-THUE-XE-MAY-1.png"
+                   width="800" height="420" layout="responsive" alt="Bản đồ Thuê Xe Máy Nguyễn Tú - mở Google Maps"></amp-img>
         </a>
-        <small class="muted" style="display:block;margin-top:6px">Nhấn vào bản đồ để mở Google Maps (mở trong cửa sổ mới)</small>
+        <small class="muted" style="display:block;margin-top:6px">Nhấn vào ảnh để mở vị trí trên Google Maps</small>
       </p>
     </section>
 
-    <!-- Floating CTA quick actions -->
+    <!-- Floating CTA -->
     <div class="cta-fixed" aria-hidden="false">
       <a href="tel:0942467674" aria-label="Gọi ngay">📞 Gọi</a>
       <a href="https://zalo.me/0942467674" aria-label="Chat Zalo">💬 Zalo</a>
@@ -331,14 +344,14 @@
       <a href="https://wa.me/84942467674" aria-label="Chat WhatsApp">💬 WhatsApp</a>
     </div>
 
-    <!-- Footer with colored SVG icons -->
+    <!-- Footer (no TikTok) with colored SVG icons -->
     <footer>
       <div class="footer-wrap">
         <div class="footer-col">
           <h3>Liên hệ</h3>
           <p>112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội</p>
           <p>☎️ <a href="tel:0942467674">0942467674</a></p>
-          <p>✉️ <a href="mailto:thuexemaynguyentu@gmail.com">thuexemaynguyentu@gmail.com</a></p>
+          <p>✉️ <a href="mailto:thuexmaynguyentu@gmail.com">thuexmaynguyentu@gmail.com</a></p>
         </div>
 
         <div class="footer-col">
@@ -352,11 +365,10 @@
               </svg>
             </a>
 
-            <!-- Zalo (using blue circle + Z icon) -->
+            <!-- Zalo -->
             <a href="https://zalo.me/0942467674" target="_blank" rel="noopener" aria-label="Zalo" role="listitem">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect rx="6" width="24" height="24" fill="#0068FF"/>
-                <path d="M6 6h12v12H6z" fill="none"/>
                 <path d="M7.8 8.5h1.7l1.9 3.1L13.4 8.5h1.6l-2.5 4.1L15 15H13.4l-1.9-3.1L9.7 15H8.1l2.1-3.4L7.8 8.5z" fill="#fff"/>
               </svg>
             </a>
@@ -384,21 +396,13 @@
                 <path d="M10 8l6 4-6 4V8z" fill="#fff"/>
               </svg>
             </a>
-
-            <!-- TikTok (simple colored icon) -->
-            <a href="https://www.tiktok.com/@thuexemaynguyentu" target="_blank" rel="noopener" aria-label="TikTok" role="listitem">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect rx="6" width="24" height="24" fill="#000"/>
-                <path d="M15 7.5c0 .7.1 1.4.4 2 .4.8 1 1.5 2 1.9V12c-1.1-.1-2-.3-2.9-.9-.9-.6-1.5-1.5-1.9-2.6l-.2-.6H10v6.6c0 1.8-1.4 3.2-3.2 3.2S3.6 18.4 3.6 16.6 5 13.4 6.8 13.4c.6 0 1.2.1 1.7.4V9.2c-.6-.2-1.1-.4-1.6-.6-1.3-.5-2.6-1.1-3.8-1.9 0 0 2.7-1.1 6.1-.7 2.2.3 3.3 1.6 3.8 2.1z" fill="#25F4EE"/>
-              </svg>
-            </a>
           </div>
         </div>
 
         <div class="footer-col">
           <h3>Giờ mở cửa</h3>
           <p>09:00 – 21:00 (cả lễ & Tết)</p>
-          <p>© 2025 Thuê Xe Máy Hà Nội – Nguyễn Tuấn Tú</p>
+          <p>© 2025 Thuê Xe Máy Hà Nội – Nguyễn Tú</p>
         </div>
       </div>
     </footer>
