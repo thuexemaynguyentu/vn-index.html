@@ -55,10 +55,18 @@
     /* Offcanvas toggler visible on mobile */
     .mobile-menu-btn{background:transparent;border:2px solid rgba(255,255,255,0.06);color:#fff;padding:6px 10px;border-radius:8px}
 
-    /* Hero */
-    .hero{display:flex;gap:24px;align-items:center;justify-content:space-between;margin:18px 0;flex-wrap:wrap}
-    .hero-left{flex:1 1 320px;min-width:260px}
-    .hero-right{flex:0 1 560px;min-width:260px;text-align:center}
+    /* === SỬA: Bố cục Hero Section === */
+    .hero{
+      display: flex;
+      flex-direction: column-reverse; /* Luôn xếp banner (.hero-right) lên trên */
+      align-items: center;
+      gap: 24px;
+      margin: 18px 0;
+    }
+    .hero-left{flex:1 1 320px;min-width:260px; width: 100%;}
+    .hero-right{flex:0 1 560px;min-width:260px;text-align:center; width: 100%;}
+    /* ============================== */
+
     .hero-title{font-size:26px;font-weight:800;color:var(--dark);margin:0 0 8px}
     .hero-sub{font-size:16px;color:var(--muted);margin-bottom:14px}
     .features{list-style:none;padding:0;margin:8px 0}
@@ -122,7 +130,7 @@
     .floating-cta a{background:var(--accent);color:#fff;padding:12px 14px;border-radius:999px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
     .floating-cta a:hover{transform:translateY(-4px);transition:all .18s ease}
 
-    /* === SỬA: Hiệu ứng Fade-in 0.9s === */
+    /* Hiệu ứng Fade-in 0.9s */
     .fade-in {
       opacity: 0;
       transform: translateY(15px);
@@ -132,9 +140,10 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* ===================================== */
 
-    @media (max-width:900px){ .hero{flex-direction:column-reverse} }
+    /* Bỏ media query không cần thiết */
+    /* @media (max-width:900px){ .hero{flex-direction:column-reverse} } */
+    
     @media (max-width:480px){
       .hero-title{font-size:20px}
       .hero-img-wrap img{max-height:420px}
@@ -450,7 +459,7 @@
       });
     }
 
-    // === SỬA: Logic cuộn mượt cho menu để không bị lỗi ===
+    // Logic cuộn mượt cho menu
     function smoothScrollTo(selector) {
       const element = document.querySelector(selector);
       if (!element) return;
@@ -465,14 +474,12 @@
       });
     }
 
-    // Gắn sự kiện click CHỈ cho các link điều hướng (.nav-link)
     document.querySelectorAll('.nav-link').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
-        e.preventDefault(); // Ngăn hành vi mặc định
+        e.preventDefault();
         const targetId = this.getAttribute('href');
         smoothScrollTo(targetId);
 
-        // Nếu là menu mobile, đóng lại sau khi click
         const offcanvasEl = document.getElementById('offcanvasMenu');
         if (offcanvasEl && offcanvasEl.classList.contains('show')) {
           const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasEl);
@@ -482,7 +489,6 @@
         }
       });
     });
-    // ========================================================
 
     // Init Swiper for reviews (autoplay, pause on hover)
     const swiper = new Swiper('.mySwiper', {
