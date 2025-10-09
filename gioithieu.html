@@ -56,7 +56,6 @@
     .mobile-menu-btn{background:transparent;border:2px solid rgba(255,255,255,0.06);color:#fff;padding:6px 10px;border-radius:8px}
 
     /* === BỎ BỐ CỤC HERO CŨ === */
-    /* Các style cho .hero, .hero-left, .hero-right đã được loại bỏ */
 
     .features{list-style:none;padding:0;margin:8px 0}
     .features li{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid #f0f0f0}
@@ -88,19 +87,24 @@
     .btn-zalo{background:#fff;color:var(--accent);border:2px solid var(--accent)}
     .btn-map{background:#ffb347;color:#111}
 
-    /* Price table */
-    /* Cập nhật style để hỗ trợ table-responsive tốt hơn */
-    .price-card{max-width:520px;margin:12px auto;border-radius:10px;overflow:hidden;border:1px solid #eee}
-    /* Loại bỏ overflow:hidden nếu dùng table-responsive, nhưng giữ lại để có hiệu ứng bo góc đẹp hơn */
-    .price-card-wrap {
-      max-width: 100%;
-      margin: 12px auto;
-      border-radius: 10px;
-      border: 1px solid #eee;
+    /* Price table - Đã Cập Nhật để cuộn ngang tốt hơn */
+    .price-card-wrap{
+      max-width:520px;
+      margin:12px auto;
+      border-radius:10px;
+      border:1px solid #eee;
+      /* Đảm bảo div này không có overflow:hidden để table-responsive hoạt động */
     }
-    .pricetable{width:100%;border-collapse:collapse; min-width: 480px;} /* Thêm min-width cho A11y */
+    .pricetable{width:100%;border-collapse:collapse; min-width: 480px;}
     table.pricetable th, table.pricetable td{padding:12px;text-align:center;border-bottom:1px solid #eee}
     table.pricetable th{background:var(--accent);color:#fff;font-weight:700}
+    
+    /* Đảm bảo bo góc cho bảng trong table-responsive */
+    .table-responsive {
+      border-radius: 10px; 
+      overflow: hidden; /* Dùng overflow:hidden cho table-responsive thay vì price-card-wrap */
+    }
+
 
     /* FAQ */
     .faq-section{background:#111;border-top:4px solid var(--accent);color:#f5f5f5;padding:22px;border-radius:10px;margin:22px 0}
@@ -233,8 +237,8 @@
       <h2>📋 Bảng giá thuê xe máy</h2>
       <h3 style="color:var(--muted);font-weight:600">Giá minh bạch — không phát sinh</h3>
       
-      <div class="table-responsive">
-        <div class="price-card mt-3">
+      <div class="price-card-wrap mt-3">
+        <div class="table-responsive">
           <table class="pricetable">
             <thead>
               <tr>
@@ -267,8 +271,7 @@
           </table>
         </div>
       </div>
-      
-      </section>
+    </section>
 
     <section id="faq" class="faq-section fade-in" style="transition-delay:.13s" aria-label="Câu hỏi thường gặp">
       <h2>❓ Câu hỏi thường gặp</h2>
@@ -497,7 +500,6 @@
 
         const offcanvasEl = document.getElementById('offcanvasMenu');
         if (offcanvasEl && offcanvasEl.classList.contains('show')) {
-          // Chỉ tắt offcanvas khi click từ bên trong
           const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasEl);
           if (offcanvasInstance) {
             offcanvasInstance.hide();
