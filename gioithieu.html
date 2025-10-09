@@ -89,8 +89,16 @@
     .btn-map{background:#ffb347;color:#111}
 
     /* Price table */
+    /* Cập nhật style để hỗ trợ table-responsive tốt hơn */
     .price-card{max-width:520px;margin:12px auto;border-radius:10px;overflow:hidden;border:1px solid #eee}
-    table.pricetable{width:100%;border-collapse:collapse}
+    /* Loại bỏ overflow:hidden nếu dùng table-responsive, nhưng giữ lại để có hiệu ứng bo góc đẹp hơn */
+    .price-card-wrap {
+      max-width: 100%;
+      margin: 12px auto;
+      border-radius: 10px;
+      border: 1px solid #eee;
+    }
+    .pricetable{width:100%;border-collapse:collapse; min-width: 480px;} /* Thêm min-width cho A11y */
     table.pricetable th, table.pricetable td{padding:12px;text-align:center;border-bottom:1px solid #eee}
     table.pricetable th{background:var(--accent);color:#fff;font-weight:700}
 
@@ -166,7 +174,7 @@
       </div>
     </div>
 
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel" role="dialog" aria-modal="true">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Đóng"></button>
@@ -183,7 +191,7 @@
     </div>
   </header>
 
-  <main class="container-narrow" id="main">
+  <main class="container-narrow" id="main" role="main">
     <section id="gioithieu" class="fade-in" style="transition-delay:.04s; margin-top: 24px; margin-bottom: 24px;">
       <div class="intro-section">
         <p class="intro-text"><strong>Thuê Xe Máy Nguyễn Tú</strong> — Dịch vụ cho thuê xe máy uy tín tại Long Biên, Hà Nội. Chúng tôi cung cấp xe số, xe ga và xe điện được bảo dưỡng định kỳ, thủ tục thuê đơn giản và cọc nhẹ.</p>
@@ -225,64 +233,42 @@
       <h2>📋 Bảng giá thuê xe máy</h2>
       <h3 style="color:var(--muted);font-weight:600">Giá minh bạch — không phát sinh</h3>
       
-      <div class="price-card mt-3" style="overflow-x:auto;">
-        <table class="pricetable">
-          <thead>
-            <tr>
-              <th>Loại xe</th>
-              <th>Giá/ngày</th>
-              <th>Giá/tuần</th>
-              <th>Giá/tháng</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Xe số</td>
-              <td>150.000đ</td>
-              <td>600.000đ</td>
-              <td>1.000.000đ</td>
-            </tr>
-            <tr>
-              <td>Xe ga</td>
-              <td>150.000 – 200.000đ</td>
-              <td>700.000 – 1.000.000đ</td>
-              <td>1.200.000 – 2.000.000đ</td>
-            </tr>
-            <tr>
-              <td>Xe điện</td>
-              <td>150.000 – 200.000đ</td>
-              <td>700.000 – 1.000.000đ</td>
-              <td>1.200.000 – 2.000.000đ</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="table-responsive">
+        <div class="price-card mt-3">
+          <table class="pricetable">
+            <thead>
+              <tr>
+                <th>Loại xe</th>
+                <th>Giá/ngày</th>
+                <th>Giá/tuần</th>
+                <th>Giá/tháng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Xe số</td>
+                <td>150.000đ</td>
+                <td>600.000đ</td>
+                <td>1.000.000đ</td>
+              </tr>
+              <tr>
+                <td>Xe ga</td>
+                <td>150.000 – 200.000đ</td>
+                <td>700.000 – 1.000.000đ</td>
+                <td>1.200.000 – 2.000.000đ</td>
+              </tr>
+              <tr>
+                <td>Xe điện</td>
+                <td>150.000 – 200.000đ</td>
+                <td>700.000 – 1.000.000đ</td>
+                <td>1.200.000 – 2.000.000đ</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </section>
-
-    <style>
-    .price-card {
-      max-width: 100%;
-      margin: 12px auto;
-      border-radius: 10px;
-      border: 1px solid #eee;
-    }
-    .pricetable {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 480px;
-    }
-    .pricetable th,
-    .pricetable td {
-      padding: 12px;
-      text-align: center;
-      border-bottom: 1px solid #eee;
-    }
-    .pricetable th {
-      background: var(--accent);
-      color: #fff;
-      font-weight: 700;
-    }
-    </style>
+      
+      </section>
 
     <section id="faq" class="faq-section fade-in" style="transition-delay:.13s" aria-label="Câu hỏi thường gặp">
       <h2>❓ Câu hỏi thường gặp</h2>
@@ -511,6 +497,7 @@
 
         const offcanvasEl = document.getElementById('offcanvasMenu');
         if (offcanvasEl && offcanvasEl.classList.contains('show')) {
+          // Chỉ tắt offcanvas khi click từ bên trong
           const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasEl);
           if (offcanvasInstance) {
             offcanvasInstance.hide();
@@ -534,7 +521,7 @@
       swiperEl.addEventListener('mouseleave', ()=> swiper.autoplay.start());
     }
 
-    // Fade-in effect on scroll
+    // Fade-in effect on scroll (Intersection Observer)
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
