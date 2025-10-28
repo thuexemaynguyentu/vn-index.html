@@ -150,7 +150,31 @@
       .brand-row{padding:10px 0}
     }
   </style>
-</head>
+
+  <link id="fa-css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+  <script>
+  (function(){
+    function addFallback(){
+      if(document.getElementById('fa-css-fallback')) return;
+      var l=document.createElement('link');
+      l.id='fa-css-fallback';
+      l.rel='stylesheet';
+      l.href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css';
+      document.head.appendChild(l);
+    }
+    var main = document.getElementById('fa-css');
+    if(main) main.addEventListener('error', addFallback, {once:true});
+    window.addEventListener('load', function(){
+      setTimeout(function(){
+        try{
+          if (!(document.fonts && document.fonts.check('1em "Font Awesome 6 Free"'))) addFallback();
+        }catch(e){ addFallback(); }
+      }, 300);
+    });
+  })();
+  </script>
+  </head>
 <body>
   <header class="site-header">
     <div class="container-narrow">
@@ -446,7 +470,7 @@
           "name":"Gói thuê xe",
           "itemListElement":[
             {"@type":"Offer","name":"Thuê theo ngày - Xe số","itemOffered":{"@type":"Product","name":"Xe số"},"price":"150000","priceCurrency":"VND"},
-            {"@type":"Offer","name":"Thuê theo tháng - Xe ga","itemOffered":{"@type":"Product","name":"Xe ga"},"price":["1200000","2000000"],"priceCurrency":"VND"},
+            {"@type":"Offer","name":"Thuê theo tháng - Xe ga","itemOffied":{"@type":"Product","name":"Xe ga"},"price":["1200000","2000000"],"priceCurrency":"VND"},
             {"@type":"Offer","name":"Thuê theo tháng - Xe điện","itemOffered":{"@type":"Product","name":"Xe điện"},"price":["1200000","2000000"],"priceCurrency":"VND"}
           ]
         }
@@ -541,9 +565,8 @@
       observer.observe(el);
     });
   </script>
-   <script defer src="https://motoopen.github.io/chothuexemayhanoi/motoai_v19i_ui98_typingreal_delay5s.js"></script>
+   <script src="https://motoopen.github.io/chothuexemayhanoi/motoai_v19i_ui98_typingreal_delay5s.js"></script>
 
 </body>
 </html>
-</body>
-</html>
+
