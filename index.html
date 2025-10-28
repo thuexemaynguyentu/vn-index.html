@@ -261,6 +261,59 @@
     /* Ripple cho bottom nav */
     .ripple{position:absolute;border-radius:999px;transform:scale(0);animation:ripple .6s ease-out;background:rgba(255,255,255,.25);pointer-events:none}
     @keyframes ripple{to{transform:scale(3.2);opacity:0}}
+    
+    /* ===== Mini App Menu (Offcanvas) ===== */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 4px 0; /* Thêm padding nhẹ */
+    }
+    .menu-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 20px 12px;
+      /* Nền semi-white có blur */
+      background: rgba(248, 249, 250, 0.85); /* Dùng màu light của Bootstrap với opacity */
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(0,0,0,0.05); /* Viền nhẹ */
+      border-radius: 14px; /* Bo góc 14px */
+      color: #212529; /* Màu text tối (vì nền offcanvas là trắng) */
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.2s cubic-bezier(.22,1,.36,1);
+    }
+    .menu-tile i {
+      font-size: 24px; /* Icon lớn 22-24px */
+      color: var(--accent); /* Dùng màu nhấn của theme */
+      line-height: 1;
+    }
+    .menu-tile span {
+      font-weight: 600; /* Label đậm */
+      font-size: 14px;
+      color: #111;
+    }
+    
+    .menu-tile:hover {
+      transform: translateY(-3px); /* Nhô lên khi hover */
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      background: #ffffff; /* Sáng hơn khi hover */
+    }
+    .menu-tile:active {
+      transform: translateY(1px) scale(0.98); /* Nhấn xuống khi active */
+      background: #f1f3f5;
+    }
+    /* Hỗ trợ truy cập bằng phím */
+    .menu-tile:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 4px rgba(255,102,0,0.15);
+    }
+    /* ===== Hết Mini App Menu ===== */
   </style>
 
   <link id="fa-css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -322,15 +375,40 @@
         <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Đóng"></button>
       </div>
+      <!-- ===== NỘI DUNG OFF CANVAS ĐÃ ĐƯỢC THAY THẾ BẰNG GRID ===== -->
       <div class="offcanvas-body">
-        <ul class="list-unstyled">
-          <li class="mb-2"><a href="#gioithieu" class="d-block fs-5 nav-link" data-bs-dismiss="offcanvas">Trang chủ</a></li>
-          <li class="mb-2"><a href="#gioithieu" class="d-block fs-5 nav-link" data-bs-dismiss="offcanvas">Giới thiệu</a></li>
-          <li class="mb-2"><a href="#gia" class="d-block fs-5 nav-link" data-bs-dismiss="offcanvas">Bảng giá</a></li>
-          <li class="mb-2"><a href="#faq" class="d-block fs-5 nav-link" data-bs-dismiss="offcanvas">FAQ</a></li>
-          <li class="mb-2"><a href="#footer" class="d-block fs-5 nav-link" data-bs-dismiss="offcanvas">Liên hệ</a></li>
-        </ul>
+        <div class="menu-grid" role="menu" aria-labelledby="offcanvasMenuLabel">
+          
+          <a href="#gioithieu" class="menu-tile" role="menuitem" tabindex="0">
+            <i class="fa-solid fa-house" aria-hidden="true"></i>
+            <span>Trang chủ</span>
+          </a>
+          
+          <a href="#gioithieu" class="menu-tile" role="menuitem" tabindex="0">
+            <i class="fa-solid fa-id-card" aria-hidden="true"></i>
+            <span>Giới thiệu</span>
+          </a>
+          
+          <a href="#gia" class="menu-tile" role="menuitem" tabindex="0">
+            <i class="fa-solid fa-tags" aria-hidden="true"></i>
+            <span>Bảng giá</span>
+          </a>
+          
+          <a href="#faq" class="menu-tile" role="menuitem" tabindex="0">
+            <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
+            <span>FAQ</span>
+          </a>
+          
+          <a href="#footer" class="menu-tile" role="menuitem" tabindex="0">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <span>Liên hệ</span>
+          </a>
+          
+          <!-- Grid 2 cột với 5 item sẽ tự động căn chỉnh (item cuối ở cột 1) -->
+          
+        </div>
       </div>
+      <!-- ===== KẾT THÚC THAY THẾ ===== -->
     </div>
   </header>
 
@@ -631,7 +709,6 @@
         {"@type":"Question","name":"Giá thuê theo tháng?","acceptedAnswer":{"@type":"Answer","text":"Giá thuê tháng từ 1.200.000đ – 2.000.000đ tuỳ loại xe."}}
       ]}
     ]
-  }
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -642,7 +719,8 @@
     const mobileBtn = document.getElementById('mobileMenuBtn');
     if (mobileBtn) {
       mobileBtn.addEventListener('click', () => {
-        const off = new bootstrap.Offcanvas(document.getElementById('offcanvasMenu'));
+        // Sử dụng getOrCreateInstance để đảm bảo an toàn
+        const off = bootstrap.Offcanvas.getOrCreateInstance(document.getElementById('offcanvasMenu'));
         off.toggle();
       });
     }
@@ -668,6 +746,8 @@
         const targetId = this.getAttribute('href');
         smoothScrollTo(targetId);
 
+        // Logic đóng offcanvas này sẽ không ảnh hưởng đến .menu-tile mới
+        // vì .menu-tile không có class .nav-link
         const offcanvasEl = document.getElementById('offcanvasMenu');
         if (offcanvasEl && offcanvasEl.classList.contains('show')) {
           const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasEl);
@@ -728,7 +808,8 @@
     const bottomLinks = bottomNav ? bottomNav.querySelectorAll('a') : [];
     const indicator = bottomNav ? bottomNav.querySelector('.nav-indicator') : null;
     const topLinks = document.querySelectorAll('nav.desktop-nav a.nav-link');
-    const offcanvasLinks = document.querySelectorAll('#offcanvasMenu a.nav-link');
+    // Bỏ offcanvasLinks khỏi logic này vì nó đã được xử lý riêng
+    // const offcanvasLinks = document.querySelectorAll('#offcanvasMenu a.nav-link'); // Dòng này không còn cần thiết cho .menu-tile
     let lastScroll = 0;
 
     function moveIndicator(target){
@@ -746,7 +827,8 @@
         const el = document.querySelector(id);
         if(el && window.scrollY >= el.offsetTop - 200) current = id;
       }
-      [...topLinks, ...offcanvasLinks, ...(bottomNav ? bottomNav.querySelectorAll('a') : [])].forEach(a=>{
+      // Cập nhật active cho topLinks và bottomLinks
+      [...topLinks, ...(bottomNav ? bottomNav.querySelectorAll('a') : [])].forEach(a=>{
         if(a.getAttribute('href') === current) a.classList.add('active'); else a.classList.remove('active');
       });
       moveIndicator(bottomNav?.querySelector('a.active'));
@@ -799,6 +881,55 @@
   </script>
   <!-- 🧭 HẾT SCRIPT GỘP THÊM (BẢN NÂNG CAO) -->
 
+  <!-- ===== Mini App Menu (Offcanvas) JS ===== -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const offcanvasEl = document.getElementById('offcanvasMenu');
+    if (!offcanvasEl) return;
+    
+    // Lấy hoặc tạo instance của Offcanvas để điều khiển việc đóng
+    const offcanvasInstance = bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl);
+
+    // Lắng nghe tất cả .menu-tile bên trong offcanvas
+    document.querySelectorAll('#offcanvasMenu .menu-tile').forEach(tile => {
+      
+      // Hàm hành động chung cho cả click và phím
+      const handleAction = (e) => {
+        e.preventDefault(); // Ngăn hành vi mặc định của thẻ <a>
+        e.stopPropagation(); // Ngăn sự kiện nổi bọt
+        
+        const targetId = tile.getAttribute('href');
+        
+        // Gọi hàm smoothScrollTo toàn cục đã tồn tại
+        if (typeof smoothScrollTo === 'function') {
+          smoothScrollTo(targetId);
+        } else {
+          // Fallback nếu hàm không tồn tại (không mong muốn)
+          console.error('Hàm smoothScrollTo() không tìm thấy.');
+          document.querySelector(targetId)?.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Đóng offcanvas sau khi chọn
+        if (offcanvasInstance) {
+          offcanvasInstance.hide();
+        }
+      };
+
+      // Thêm listener cho click
+      tile.addEventListener('click', handleAction);
+      
+      // Thêm listener cho phím (Enter và Space)
+      tile.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          handleAction(e);
+        }
+      });
+    });
+  });
+  </script>
+  <!-- ===== Hết Mini App Menu JS ===== -->
+
 </body>
 </html>
+
 
