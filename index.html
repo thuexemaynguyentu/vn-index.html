@@ -149,6 +149,105 @@
       nav.desktop-nav{display:none}
       .brand-row{padding:10px 0}
     }
+    
+    /* ===== CSS GỘP THÊM ===== */
+    /* ===== TOP MENU (Desktop) ===== */
+    nav.desktop-nav ul {
+      /* display: flex; */ /* Đã có */
+      gap: 8px; /* Ghi đè 18px */
+      justify-content: center;
+      /* align-items: center; */ /* Đã có */
+      /* margin: 0; */ /* Đã có */
+      padding: 10px; /* Ghi đè 0 */
+      /* list-style: none; */ /* Đã có */
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      transition: all .35s cubic-bezier(.22,1,.36,1);
+      position: relative;
+    }
+
+    nav.desktop-nav li { flex: 1; text-align: center; }
+
+    nav.desktop-nav a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      /* color: #fff; */ /* Đã có */
+      font-weight: 600; /* Ghi đè 700 */
+      padding: 10px 8px;
+      border-radius: 14px;
+      transition: all .25s cubic-bezier(.22,1,.36,1);
+      font-size: 14px;
+    }
+
+    nav.desktop-nav a i {
+      font-size: 18px;
+      margin-bottom: 4px;
+      opacity: .9;
+    }
+
+    nav.desktop-nav a:hover {
+      background: rgba(255,255,255,0.15);
+      transform: translateY(-3px);
+    }
+    nav.desktop-nav a.active {
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 0 10px rgba(255,255,255,0.2) inset;
+    }
+
+    /* Khi cuộn header co lại */
+    header.site-header.scrolled nav.desktop-nav ul {
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    }
+
+    /* ===== BOTTOM BAR (Mobile) ===== */
+    .app-bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 66px;
+      background: rgba(20,20,20,0.9);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 9999;
+      transition: transform .35s ease, opacity .25s ease;
+    }
+    .app-bottom-nav.hidden {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    .app-bottom-nav a {
+      flex: 1;
+      text-align: center;
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      transition: all .25s ease;
+    }
+    .app-bottom-nav a i {
+      font-size: 20px;
+      opacity: .9;
+    }
+    .app-bottom-nav a.active {
+      color: var(--accent, #ff6600);
+    }
+    @media (min-width: 768px){
+      .app-bottom-nav{ display:none; }
+    }
+    /* ===== HẾT CSS GỘP THÊM ===== */
   </style>
 
   <link id="fa-css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -193,6 +292,7 @@
 
           <nav class="desktop-nav d-none d-lg-block" aria-label="Main navigation">
             <ul>
+              <!-- Cấu trúc HTML gốc không thay đổi, CSS mới sẽ áp dụng cho các thẻ <a> này -->
               <li style="display:inline-block;margin-right:18px"><a class="nav-link" href="#gioithieu">Trang chủ</a></li>
               <li style="display:inline-block;margin-right:18px"><a class="nav-link" href="#gioithieu">Giới thiệu</a></li>
               <li style="display:inline-block;margin-right:18px"><a class="nav-link" href="#gia">Bảng giá</a></li>
@@ -393,6 +493,14 @@
     </section>
   </main>
 
+  <!-- 🧭 HTML Menu dưới cùng (ĐÃ GỘP) -->
+  <nav class="app-bottom-nav" aria-label="Mobile bottom nav">
+    <a href="#gioithieu" class="active"><i class="fa-solid fa-house"></i><span>Trang</span></a>
+    <a href="#gia"><i class="fa-solid fa-tags"></i><span>Giá</span></a>
+    <a href="#faq"><i class="fa-solid fa-circle-question"></i><span>FAQ</span></a>
+    <a href="#footer"><i class="fa-solid fa-phone"></i><span>Liên hệ</span></a>
+  </nav>
+
   <div class="floating-cta" role="complementary" aria-label="Gọi nhanh">
     <a href="tel:0942467674" aria-label="Gọi đặt xe">📞 Gọi</a>
     <a href="https://zalo.me/0942467674" aria-label="Chat Zalo" target="_blank" rel="noopener">💬 Zalo</a>
@@ -566,6 +674,50 @@
     });
   </script>
    <script src="https://motoopen.github.io/chothuexemayhanoi/motoai_v19i_ui98_typingreal_delay5s.js"></script>
+
+  <!-- 🧭 SCRIPT GỘP THÊM -->
+  <script>
+  /* 📱 Hiệu ứng Facebook-style: scroll hide/show bottom nav + active link */
+  (function(){
+    const header = document.querySelector('header.site-header');
+    const topLinks = document.querySelectorAll('nav.desktop-nav a.nav-link'); /* Sửa đổi để chính xác hơn */
+    const bottomLinks = document.querySelectorAll('.app-bottom-nav a');
+    const bottomNav = document.querySelector('.app-bottom-nav');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll',()=>{
+      // Header co lại
+      if(window.scrollY>60) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+
+      // Ẩn/hiện bottom nav
+      if(!bottomNav) return;
+      if(window.scrollY>lastScroll && window.scrollY>100){
+        bottomNav.classList.add('hidden');
+      } else {
+        bottomNav.classList.remove('hidden');
+      }
+      lastScroll = window.scrollY;
+
+      // Active tracking
+      const sections = ['#gioithieu','#gia','#faq','#footer'];
+      let current = '';
+      for(const id of sections){
+        const el=document.querySelector(id);
+        if(el && window.scrollY>=el.offsetTop-200) current=id;
+      }
+      
+      // Thêm các liên kết từ offcanvas menu vào danh sách cần cập nhật
+      const offcanvasLinks = document.querySelectorAll('#offcanvasMenu a.nav-link');
+      
+      [...topLinks, ...bottomLinks, ...offcanvasLinks].forEach(a=>{
+        if(a.getAttribute('href')===current) a.classList.add('active');
+        else a.classList.remove('active');
+      });
+    });
+  })();
+  </script>
+  <!-- 🧭 HẾT SCRIPT GỘP THÊM -->
 
 </body>
 </html>
