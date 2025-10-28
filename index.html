@@ -389,7 +389,120 @@
     }
     /* === HẾT CSS MỚI === */
   </style>
-
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["AutoRental","LocalBusiness"],
+      "@id": "https://thuexemaynguyentu.github.io/vn-index.html#business",
+      "name": "Thuê Xe Máy Nguyễn Tú",
+      "founder": "Nguyễn Tuấn Tú",
+      "image": "https://thuexemaynguyentu.com/wp-content/uploads/2025/09/BANNER-THUE-XE-MAY-1.png",
+      "url": "https://thuexemaynguyentu.github.io/vn-index.html",
+      "telephone": "+84942467674",
+      "email": "thuexmaynguyentu@gmail.com",
+      "priceRange": "150000-200000VND",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "112 Nguyễn Văn Cừ, Bồ Đề",
+        "addressLocality": "Long Biên",
+        "addressRegion": "Hà Nội",
+        "addressCountry": "VN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 21.0409222,
+        "longitude": 105.8692870
+      },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=21.0409222,105.8692870",
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "09:00",
+        "closes": "21:00"
+      }],
+      "areaServed": ["Hà Nội","Long Biên","Phố Cổ","Hoàn Kiếm","Tây Hồ","Ba Đình","Gia Lâm"],
+      "sameAs": [
+        "https://www.facebook.com/chothuexemaynguyentu/",
+        "https://www.instagram.com/thuexemaynguyentu/",
+        "https://www.youtube.com/channel/UCvUBwV24U4c5-q1iJ-ZL0Rg"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "128"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://thuexemaynguyentu.github.io/vn-index.html#service1",
+      "name": "Cho thuê xe máy theo ngày/tuần/tháng",
+      "serviceType": "Cho thuê xe máy",
+      "provider": { "@id": "https://thuexemaynguyentu.github.io/vn-index.html#business" },
+      "areaServed": { "@type": "City", "name": "Hà Nội" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Gói thuê xe",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Thuê theo ngày - Xe số",
+            "itemOffered": { "@type": "Product", "name": "Xe số" },
+            "price": "150000",
+            "priceCurrency": "VND"
+          },
+          {
+            "@type": "Offer",
+            "name": "Thuê theo tháng - Xe ga",
+            "itemOffered": { "@type": "Product", "name": "Xe ga" },
+            "price": ["1200000","2000000"],
+            "priceCurrency": "VND"
+          },
+          {
+            "@type": "Offer",
+            "name": "Thuê theo tháng - Xe điện",
+            "itemOffered": { "@type": "Product", "name": "Xe điện" },
+            "price": ["1200000","2000000"],
+            "priceCurrency": "VND"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://thuexemaynguyentu.github.io/vn-index.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Tôi cần giấy tờ gì để thuê xe máy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CMND/CCCD hoặc hộ chiếu, giấy phép lái xe A1 trở lên (nếu yêu cầu), tiền đặt cọc từ 2-5 triệu tuỳ loại xe, số điện thoại và địa chỉ lưu trú."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Có dịch vụ giao xe tận nơi không? Phí thế nào?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Có. Phí giao tuỳ khu vực (50.000đ - 150.000đ). Vui lòng gọi 0942467674 để biết phí chính xác."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Giá thuê theo tháng?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Giá thuê tháng từ 1.200.000đ – 2.000.000đ tuỳ loại xe."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
   <link id="fa-css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   
   <script>
