@@ -206,26 +206,35 @@
     }
 
     /* ===== BOTTOM BAR (Mobile) ===== */
-    .app-bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 66px;
-      background: rgba(20,20,20,0.9);
-      backdrop-filter: blur(20px);
-      border-top: 1px solid rgba(255,255,255,0.12);
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      z-index: 9999;
-      transition: transform .35s ease, opacity .25s ease;
+    /* CSS CŨ ĐƯỢC THAY THẾ BẰNG CSS NÂNG CẤP BÊN DƯỚI */
+    @media (min-width: 768px){
+      .app-bottom-nav{ display:none; }
     }
-    .app-bottom-nav.hidden {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-    .app-bottom-nav a {
+    /* ===== HẾT CSS GỘP THÊM ===== */
+
+    /* ===== MINI-APP HERO ===== */
+    .miniapp-hero{max-width:var(--maxw);margin:10px auto 0;padding:0 16px}
+    .miniapp-hero .card{background:#111;color:#fff;border-radius:16px;box-shadow:0 12px 30px rgba(0,0,0,.25);backdrop-filter:blur(10px);overflow:hidden}
+    .miniapp-hero .meta{display:flex;align-items:center;gap:12px;padding:12px}
+    .miniapp-hero .badge{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));display:flex;align-items:center;justify-content:center;font-weight:800}
+    .miniapp-hero .title{font-weight:800}
+    .miniapp-hero .stars{color:#ffd166;font-size:13px}
+    .miniapp-hero .quickgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;padding:0 12px 12px}
+    .quickbtn{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 6px;background:rgba(255,255,255,.08);border-radius:12px;text-decoration:none;color:#fff;font-size:12px}
+    .quickbtn i{font-size:18px;opacity:.95}
+    .quickbtn:active{transform:scale(.98)}
+    @media (max-width:520px){.miniapp-hero .quickgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+    /* ===== APP BOTTOM NAV — Nâng cấp ===== */
+    .app-bottom-nav{padding:6px 8px calc(env(safe-area-inset-bottom) + 6px)}
+    .app-bottom-nav{position:fixed;left:0;right:0;bottom:0}
+    .app-bottom-nav{background:rgba(20,20,20,.9);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-around;align-items:center;z-index:9999;transition:transform .35s ease,opacity .25s ease}
+    /* CSS CŨ CHO .app-bottom-nav đã bị ghi đè bởi CSS nâng cấp ở trên */
+    
+    .app-bottom-nav a{
+      position:relative;
+      overflow:hidden;
+      /* Các thuộc tính flex cũ được giữ lại từ CSS gốc */
       flex: 1;
       text-align: center;
       color: #fff;
@@ -236,6 +245,7 @@
       align-items: center;
       gap: 3px;
       transition: all .25s ease;
+      padding: 4px 0; /* Thêm padding để tạo không gian cho indicator */
     }
     .app-bottom-nav a i {
       font-size: 20px;
@@ -244,10 +254,13 @@
     .app-bottom-nav a.active {
       color: var(--accent, #ff6600);
     }
-    @media (min-width: 768px){
-      .app-bottom-nav{ display:none; }
-    }
-    /* ===== HẾT CSS GỘP THÊM ===== */
+    
+    .app-bottom-nav .nav-indicator{position:absolute;bottom:0px;height:3px;border-radius:3px;background:var(--accent);opacity:.95;left:0;width:24px;transition:left .28s cubic-bezier(.22,1,.36,1),width .28s cubic-bezier(.22,1,.36,1),opacity .2s}
+    .app-bottom-nav.hidden{transform:translateY(100%);opacity:0}
+
+    /* Ripple cho bottom nav */
+    .ripple{position:absolute;border-radius:999px;transform:scale(0);animation:ripple .6s ease-out;background:rgba(255,255,255,.25);pointer-events:none}
+    @keyframes ripple{to{transform:scale(3.2);opacity:0}}
   </style>
 
   <link id="fa-css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -320,6 +333,28 @@
       </div>
     </div>
   </header>
+
+  <!-- ===== HERO MINI-APP ĐÃ THÊM ===== -->
+  <section class="miniapp-hero" aria-label="Lối tắt mini app">
+    <div class="card">
+      <div class="meta">
+        <div class="badge" aria-hidden="true">NT</div>
+        <div>
+          <div class="title">Thuê Xe Máy Nguyễn Tú</div>
+          <div class="stars"><i class="fa-solid fa-star"></i> 4.9 · 128+ đánh giá</div>
+        </div>
+      </div>
+      <div class="quickgrid" role="navigation" aria-label="Lối tắt nhanh">
+        <a class="quickbtn" href="tel:0942467674"><i class="fa-solid fa-phone"></i><span>Gọi</span></a>
+        <a class="quickbtn" href="https://zalo.me/0942467674" target="_blank" rel="noopener"><i class="fa-solid fa-comment-dots"></i><span>Zalo</span></a>
+        <a class="quickbtn" href="https://www.google.com/maps/search/?api=1&query=21.0409222,105.8692870" target="_blank" rel="noopener"><i class="fa-solid fa-map-location-dot"></i><span>Bản đồ</span></a>
+        <a class="quickbtn" href="#gia"><i class="fa-solid fa-tags"></i><span>Bảng giá</span></a>
+        <a class="quickbtn" href="#faq"><i class="fa-solid fa-circle-question"></i><span>FAQ</span></a>
+        <a class="quickbtn" href="#footer"><i class="fa-solid fa-id-card"></i><span>Liên hệ</span></a>
+      </div>
+    </div>
+  </section>
+  <!-- ===== HẾT HERO MINI-APP ===== -->
 
   <main class="container-narrow" id="main" role="main">
     <section id="gioithieu" class="fade-in" style="transition-delay:.04s; margin-top: 24px; margin-bottom: 24px;">
@@ -493,8 +528,9 @@
     </section>
   </main>
 
-  <!-- 🧭 HTML Menu dưới cùng (ĐÃ GỘP) -->
+  <!-- 🧭 HTML Menu dưới cùng (ĐÃ NÂNG CẤP) -->
   <nav class="app-bottom-nav" aria-label="Mobile bottom nav">
+    <span class="nav-indicator" aria-hidden="true"></span>
     <a href="#gioithieu" class="active"><i class="fa-solid fa-house"></i><span>Trang</span></a>
     <a href="#gia"><i class="fa-solid fa-tags"></i><span>Giá</span></a>
     <a href="#faq"><i class="fa-solid fa-circle-question"></i><span>FAQ</span></a>
@@ -641,6 +677,15 @@
         }
       });
     });
+    
+    // Xử lý logic cho các link trong .app-bottom-nav (vì chúng không có class .nav-link)
+    document.querySelectorAll('.app-bottom-nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        smoothScrollTo(targetId);
+      });
+    });
 
     // Init Swiper for reviews
     const swiper = new Swiper('.mySwiper', {
@@ -675,49 +720,84 @@
   </script>
    <script src="https://motoopen.github.io/chothuexemayhanoi/motoai_v19i_ui98_typingreal_delay5s.js"></script>
 
-  <!-- 🧭 SCRIPT GỘP THÊM -->
+  <!-- 🧭 SCRIPT GỘP THÊM (BẢN NÂNG CAO) -->
   <script>
-  /* 📱 Hiệu ứng Facebook-style: scroll hide/show bottom nav + active link */
   (function(){
     const header = document.querySelector('header.site-header');
-    const topLinks = document.querySelectorAll('nav.desktop-nav a.nav-link'); /* Sửa đổi để chính xác hơn */
-    const bottomLinks = document.querySelectorAll('.app-bottom-nav a');
     const bottomNav = document.querySelector('.app-bottom-nav');
+    const bottomLinks = bottomNav ? bottomNav.querySelectorAll('a') : [];
+    const indicator = bottomNav ? bottomNav.querySelector('.nav-indicator') : null;
+    const topLinks = document.querySelectorAll('nav.desktop-nav a.nav-link');
+    const offcanvasLinks = document.querySelectorAll('#offcanvasMenu a.nav-link');
     let lastScroll = 0;
 
-    window.addEventListener('scroll',()=>{
-      // Header co lại
-      if(window.scrollY>60) header.classList.add('scrolled');
-      else header.classList.remove('scrolled');
+    function moveIndicator(target){
+      if(!indicator || !bottomNav || !target) return;
+      const r = target.getBoundingClientRect();
+      const navR = bottomNav.getBoundingClientRect();
+      indicator.style.width = Math.max(24, r.width * 0.5) + 'px';
+      indicator.style.left  = (r.left - navR.left + r.width * 0.25) + 'px';
+    }
 
-      // Ẩn/hiện bottom nav
-      if(!bottomNav) return;
-      if(window.scrollY>lastScroll && window.scrollY>100){
-        bottomNav.classList.add('hidden');
-      } else {
-        bottomNav.classList.remove('hidden');
+    function setActiveByScroll(){
+      const sections = ['#gioithieu','#gia','#faq','#footer'];
+      let current = sections[0];
+      for(const id of sections){
+        const el = document.querySelector(id);
+        if(el && window.scrollY >= el.offsetTop - 200) current = id;
+      }
+      [...topLinks, ...offcanvasLinks, ...(bottomNav ? bottomNav.querySelectorAll('a') : [])].forEach(a=>{
+        if(a.getAttribute('href') === current) a.classList.add('active'); else a.classList.remove('active');
+      });
+      moveIndicator(bottomNav?.querySelector('a.active'));
+    }
+
+    // Header co/giãn + ẩn/hiện bottom nav + active tracking
+    window.addEventListener('scroll', ()=>{
+      if(window.scrollY > 60) header.classList.add('scrolled'); else header.classList.remove('scrolled');
+      if(bottomNav){
+        if(window.scrollY > lastScroll && window.scrollY > 100) bottomNav.classList.add('hidden'); else bottomNav.classList.remove('hidden');
       }
       lastScroll = window.scrollY;
+      setActiveByScroll();
+    }, {passive:true});
 
-      // Active tracking
-      const sections = ['#gioithieu','#gia','#faq','#footer'];
-      let current = '';
-      for(const id of sections){
-        const el=document.querySelector(id);
-        if(el && window.scrollY>=el.offsetTop-200) current=id;
-      }
-      
-      // Thêm các liên kết từ offcanvas menu vào danh sách cần cập nhật
-      const offcanvasLinks = document.querySelectorAll('#offcanvasMenu a.nav-link');
-      
-      [...topLinks, ...bottomLinks, ...offcanvasLinks].forEach(a=>{
-        if(a.getAttribute('href')===current) a.classList.add('active');
-        else a.classList.remove('active');
+    // Ripple + haptic cho bottom nav
+    bottomLinks.forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        // Lưu ý: e.preventDefault() đã được xử lý ở script bên ngoài cho smooth scroll
+        const link = e.currentTarget;
+        const d = Math.max(link.clientWidth, link.clientHeight);
+        const circle = document.createElement('span');
+        const rect = link.getBoundingClientRect();
+        circle.className = 'ripple';
+        circle.style.width = circle.style.height = d + 'px';
+        circle.style.left = (e.clientX - rect.left - d/2) + 'px';
+        circle.style.top  = (e.clientY - rect.top  - d/2) + 'px';
+        link.appendChild(circle);
+        setTimeout(()=>circle.remove(), 600);
+        if(navigator.vibrate) navigator.vibrate(10);
+        
+        // Cập nhật active và indicator ngay lập tức khi click
+        bottomLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        requestAnimationFrame(()=> moveIndicator(link));
       });
     });
+
+    // Recalc indicator khi đổi kích thước
+    window.addEventListener('resize', ()=>{
+      moveIndicator(bottomNav?.querySelector('a.active') || bottomLinks[0]);
+    });
+
+    // First paint
+    setTimeout(()=>{
+      setActiveByScroll();
+      moveIndicator(bottomNav?.querySelector('a.active') || bottomLinks[0]);
+    }, 80);
   })();
   </script>
-  <!-- 🧭 HẾT SCRIPT GỘP THÊM -->
+  <!-- 🧭 HẾT SCRIPT GỘP THÊM (BẢN NÂNG CAO) -->
 
 </body>
 </html>
